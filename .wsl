@@ -1,0 +1,18 @@
+# Nothing below here will change how your terminal looks, rather, it will change some things about how it works.
+
+# This allows you to open html files in Chrome more easily by typing "chrome filename".
+alias chrome="/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe"
+
+# set -o vi
+
+# This allows you to switch between the Ubuntu root and your Windows Root.
+WINDOWS_USER=$(/mnt/c/Windows/System32/cmd.exe /c 'echo %USERNAME%' | sed -e 's/\r//g')
+
+# wr evaluates to the absolute path to your Windows user's root.
+export wr=~/../../mnt/c/Users/$WINDOWS_USER/
+
+# This gives us a quick way of moving directly to the Windows root
+alias cdwr='cd "$wr"'
+
+# This brings you to your Windows Working directory immediatly when you open a new terminal.
+cdwr
