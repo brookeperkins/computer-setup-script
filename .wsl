@@ -14,8 +14,8 @@ verify() {
 }
 
 # Aliases to start up PG and Mongo easily
-alias pgstart='sudo service postgresql start'
-alias mongostart='sudo mongod --dbpath ~/data/db'
+alias start-pg='sudo service postgresql start'
+alias start-mongo='sudo mongod --dbpath ~/data/db'
 
 # This allows you to open html files in Chrome more easily by typing "chrome filename".
 alias chrome="/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe"
@@ -32,5 +32,14 @@ export wr=~/../../mnt/c/Users/$WINDOWS_USER/
 # This gives us a quick way of moving directly to the Windows root
 alias cdwr='cd "$wr"'
 
-# This brings you to your Windows Working directory immediatly when you open a new terminal.
+# This brings you to your Windows Working directory immediately when you open a new terminal.
 cdwr
+
+clear
+echo "Welcome `whoami`"
+echo ""
+echo "A few shortcuts for your convenience"
+echo "  - start-mongo: Start Mongo DB Service"
+echo "  - start-pg: Start PG Database Service"
+echo "  - verify: Verify your Computer Setup"
+echo ""
