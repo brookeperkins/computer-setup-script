@@ -14,6 +14,8 @@ source ~/.gitprompt
 clear
 echo "Updating APT Database"
 sudo apt get update
+sudo apt-get upgrade
+sudo apt autoremove
 
 clear
 echo "Installing 'git'"
