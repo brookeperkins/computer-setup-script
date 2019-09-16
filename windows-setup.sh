@@ -1,7 +1,10 @@
 #!/bin/bash
 
-curl https://gist.githubusercontent.com/johncokos/66fad129ce3493d079755f83c4360e9f/raw/0b21422bdaf26923dd3c8686cb4aacec11817bbd/.wsl --output .wsl
-curl https://gist.githubusercontent.com/johncokos/d1376b366f388523d7b446e11a91868e/raw/11133073c12ac5cf737bebaa3745a5fc066b3e82/.gitprompt --output .gitprompt
+## Install our alias files and initialize them
+curl https://raw.githubusercontent.com/codefellows/computer-setup/master/.wsl --output .wsl
+curl https://raw.githubusercontent.com/codefellows/computer-setup/master/.gitprompt --output .gitprompt
+source ~/.wsl
+source ~/.gitprompt
 
 echo "source ~/.gitprompt" >> ~/.bashrc
 echo "source ~/.wsl" >> ~/.bashrc
@@ -19,16 +22,31 @@ sudo apt install tree
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 nvm use stable
 
-# Install some basic node apps
+# Install some global node apps
+npm install -g nodemon
 npm install -g live-server
 npm install -g json-server
 
-## Ensure we can open up VSC or Webstorm from inside WSL
+# Heroku
+bash <(curl -s https://cli-assets.heroku.com/install.sh)
 
-# VERIFY
-echo "GIT `which git`"
-echo "TREE `which tree`"
-echo "Live Server `which live-server`"
-echo "JSON Server `which json-server`"
-echo "NODE `which node`"
-echo "NPM `which npm`"
+# Postgres
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install postgresql-10
+sudo service postgresql start
+# Auto Start?
+
+echo "Create Postgres user"
+sudo -u postgres createuser --interactive --pwprompt
+sudo -u postgres createdb -O `whoami` `whoami`
+
+# Mongo
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+sudo mkdir -p ~/data/db
+sudo mongod --dbpath ~/data/db
+# Auto Start?
+
+verify
