@@ -29,10 +29,7 @@ sudo apt install tree
 
 clear
 echo "Installing 'node' with 'nvm'"
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-source ~/.bashrc
-nvm install stable
-nvm use stable
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash && source ~/.bashrc && nvm install stable && nvm use stable
 
 clear
 echo "Installing helper applictions 'nodemon, live-server, json-server'"
