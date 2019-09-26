@@ -13,7 +13,7 @@ source ~/.gitprompt
 
 clear
 echo "Updating APT Database"
-sudo apt get update
+sudo apt-get update
 sudo apt-get upgrade
 sudo apt autoremove
 
@@ -30,6 +30,7 @@ sudo apt install tree
 clear
 echo "Installing 'node' with 'nvm'"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+source ~/.bashrc
 nvm install stable
 nvm use stable
 
