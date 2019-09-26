@@ -30,6 +30,7 @@ sudo apt install tree
 clear
 echo "Installing 'node' with 'nvm'"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+nvm install stable
 nvm use stable
 
 clear
