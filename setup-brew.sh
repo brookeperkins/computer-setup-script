@@ -125,7 +125,7 @@ installMongo() {
     ## TODO:  Auto Start?
   else
     brew tap mongodb/brew
-    brew install mongodb-community@4.2
+    brew install mongodb-community
     brew services start mongodb/brew/mongodb-community
   fi
 
@@ -139,5 +139,5 @@ installMongo() {
 #installGit
 #installTree
 #installHeroku
-# installPostgres
- installMongo
+ installPostgres
+# installMongo
