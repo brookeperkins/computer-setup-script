@@ -14,7 +14,9 @@ verify() {
 }
 
 # Aliases to start up PG and Mongo easily
-alias start-pg='sudo service postgresql start'
+alias start-pg="pg_ctl start -D /home/linuxbrew/.linuxbrew/var/postgres -l logfile"
+alias stop-pg="pg_ctl stop -D /home/linuxbrew/.linuxbrew/var/postgres"
+
 alias start-mongo='sudo mongod --dbpath ~/data/db'
 
 # This allows you to open html files in Chrome more easily by typing "chrome filename".
