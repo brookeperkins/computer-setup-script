@@ -116,7 +116,12 @@ installMongo() {
 }
 
 ## Let's Go!
-installDotFiles
-updateAPT
-installHomebrew
-installNode
+# installDotFiles
+# updateAPT
+# installHomebrew
+# installNode
+installGit
+installTree
+installHeroku
+# installPostgres
+# installMongo
