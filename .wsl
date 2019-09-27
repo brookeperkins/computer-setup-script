@@ -22,6 +22,10 @@ alias start-mongo='sudo mongod --dbpath ~/data/db'
 # This allows you to open html files in Chrome more easily by typing "chrome filename".
 alias chrome="/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe"
 
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm   [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion"
+
 # For the vim nerds, puts vim keybindings in the terminal, if you want them.
 set -o vi
 
