@@ -21,6 +21,9 @@ installDotFiles() {
     echo "source ~/.wsl" >> ~/.bashrc
     source ~/.wsl
   fi
+
+  mkdir ~/.cache
+  chmod 777 ~/.cache
 }
 
 updateAPT() {
@@ -127,6 +130,6 @@ installMongo() {
 # installNode
 #installGit
 #installTree
-installHeroku
-# installPostgres
+#installHeroku
+ installPostgres
 # installMongo
