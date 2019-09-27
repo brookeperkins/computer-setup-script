@@ -101,7 +101,14 @@ installAWS() {
 
 installPostgres() {
   clear
-  brew install postgres
+  if isWSL; then
+    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+    sudo apt-get update
+    sudo apt-get install postgresql-10
+  else
+    brew install postgres
+  fi
+
   echo "Create Postgres user and default database"
   echo "   When Prompted ..."
   echo "     - Use your wsl username as the database name"
