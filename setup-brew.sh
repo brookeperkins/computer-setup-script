@@ -77,6 +77,7 @@ installNode() {
 
 installGit() {
   brew install git
+  # Do the ssh thing too?
 }
 
 installTree() {
@@ -84,7 +85,11 @@ installTree() {
 }
 
 installHeroku() {
-  brew tap heroku/brew && brew install heroku
+  if isWSL; then
+    curl https://cli-assets.heroku.com/install.sh | sh
+  else
+    brew tap heroku/brew && brew install heroku
+  fi
 }
 
 installAWS() {
@@ -120,8 +125,8 @@ installMongo() {
 # updateAPT
 # installHomebrew
 # installNode
-installGit
-installTree
+#installGit
+#installTree
 installHeroku
 # installPostgres
 # installMongo
