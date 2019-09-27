@@ -113,14 +113,22 @@ installPostgres() {
 }
 
 installMongo() {
-  #brew install mongodb
+
   clear
   echo "Installing 'mongo database server and client'"
-  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
-  sudo apt-get update
-  sudo apt-get install -y mongodb-org
-  sudo mkdir -p ~/data/db
-  ## TODO:  Auto Start?
+
+  if isWSL; then
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
+    sudo apt-get update
+    sudo apt-get install -y mongodb-org
+    sudo mkdir -p ~/data/db
+    ## TODO:  Auto Start?
+  else
+    brew tap mongodb/brew
+    brew install mongodb-community@4.2
+    brew services start mongodb/brew/mongodb-community
+  fi
+
 }
 
 ## Let's Go!
@@ -131,5 +139,5 @@ installMongo() {
 #installGit
 #installTree
 #installHeroku
- installPostgres
-# installMongo
+# installPostgres
+ installMongo
