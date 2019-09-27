@@ -53,8 +53,8 @@ sudo -u postgres createdb -O `whoami` `whoami`
 brew install mongodb
 
 ## Node and Helper Apps
+mkdir ~/.nvm
 brew install nvm
-
 nvm install stable
 nvm use stable
 npm install -g nodemon
