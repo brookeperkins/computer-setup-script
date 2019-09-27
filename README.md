@@ -26,7 +26,7 @@ This will install the needed files. Follow any directions that pop up and restar
 1. Finally, the prompt will change and you will be on a command line. Type `pwd` to see where you currently are in the FS, you should be at `/home/<your username>`. This is the root level of your Ubuntu user.
 1. Run this command to setup your system and install the default software utilities and applications
     ```
-    bash <(curl -s https://raw.githubusercontent.com/codefellows/computer-setup/master/windows-setup.sh)
+    bash <(curl -s https://raw.githubusercontent.com/codefellows/computer-setup/master/setup-brew.sh)
     ```
 ### 2. Install Visual Studio Code
 

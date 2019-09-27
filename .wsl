@@ -1,23 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # VERIFY
-verify() {
-  echo "GIT `git --version`"
-  echo "TREE `tree --version`"
-  echo "Live Server `live-server --version`"
-  echo "JSON Server `json-server --version`"
-  echo "NODE `node --version`"
-  echo "NPM `npm --version`"
-  echo "HEROKU `heroku --version`"
-  echo "PSQL `psql --version`"
-  echo "MONGO `mongo --version`"
-}
 
 # Aliases to start up PG and Mongo easily
 alias start-pg="pg_ctl start -D /home/linuxbrew/.linuxbrew/var/postgres -l logfile"
 alias stop-pg="pg_ctl stop -D /home/linuxbrew/.linuxbrew/var/postgres"
-
-alias start-mongo='sudo mongod --dbpath ~/data/db'
 
 # This allows you to open html files in Chrome more easily by typing "chrome filename".
 alias chrome="/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe"
@@ -25,9 +12,6 @@ alias chrome="/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.ex
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm   [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion"
-
-# For the vim nerds, puts vim keybindings in the terminal, if you want them.
-set -o vi
 
 # This allows you to switch between the Ubuntu root and your Windows Root.
 WINDOWS_USER=$(/mnt/c/Windows/System32/cmd.exe /c 'echo %USERNAME%' | sed -e 's/\r//g')
