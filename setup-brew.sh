@@ -50,11 +50,13 @@ sudo -u postgres createuser --interactive --pwprompt
 sudo -u postgres createdb -O `whoami` `whoami`
 
 ## Mongo
-brew install mongodb
+# brew install mongodb
 
 ## Node and Helper Apps
 mkdir ~/.nvm
+export NVM_DIR="$HOME/.nvm"
 brew install nvm
+[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm   [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 nvm install stable
 nvm use stable
 npm install -g nodemon
