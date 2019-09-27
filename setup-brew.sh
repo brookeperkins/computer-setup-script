@@ -26,28 +26,28 @@ echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
 sudo apt-get install build-essential curl file git
 
 ## GIT
-brew install git
+# brew install git
 
 ## Tree
-brew install tree
+# brew install tree
 
 ## Heroku
-brew tap heroku/brew && brew install heroku
+# brew tap heroku/brew && brew install heroku
 
 ## AWS
-brew install awscli
+# brew install awscli
 
 ## Postgres
 # clear
-brew install postgres
-echo "Create Postgres user and default database"
-echo "   When Prompted ..."
-echo "     - Use your wsl username as the database name"
-echo "     - Provide your wsl username and password to create a new pg user"
-echo "     - Say 'Yes' when asked if this user should be a Super User'"
-echo ""
-sudo -u postgres createuser --interactive --pwprompt
-sudo -u postgres createdb -O `whoami` `whoami`
+# brew install postgres
+# echo "Create Postgres user and default database"
+# echo "   When Prompted ..."
+# echo "     - Use your wsl username as the database name"
+# echo "     - Provide your wsl username and password to create a new pg user"
+# echo "     - Say 'Yes' when asked if this user should be a Super User'"
+# echo ""
+# sudo -u postgres createuser --interactive --pwprompt
+# sudo -u postgres createdb -O `whoami` `whoami`
 
 ## Mongo
 # brew install mongodb
