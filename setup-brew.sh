@@ -27,11 +27,13 @@ installDotFiles() {
 }
 
 updateAPT() {
-  clear
-  echo "Updating APT Database"
-  sudo apt-get update
-  sudo apt-get upgrade
-  sudo apt autoremove
+  if isWSL; then
+    clear
+    echo "Updating APT Database"
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt autoremove
+  fi
 }
 
 installHomebrew() {
