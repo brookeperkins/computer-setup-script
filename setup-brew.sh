@@ -120,8 +120,12 @@ installPostgres() {
   echo "     - Provide your wsl username and password to create a new pg user"
   echo "     - Say 'Yes' when asked if this user should be a Super User'"
   echo ""
-  sudo -u postgres createuser --interactive --pwprompt
-  sudo -u postgres createdb -O `whoami` `whoami`
+
+  # sudo -u postgres createuser --interactive --pwprompt
+  # sudo -u postgres createdb -O `whoami` `whoami`
+
+  createuser --interactive --pwprompt
+  createdb -O `whoami` `whoami`
 }
 
 installMongo() {
