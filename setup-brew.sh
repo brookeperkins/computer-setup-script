@@ -38,12 +38,7 @@ installHomebrew() {
   clear
   echo "Istalling Homebrew"
   if isWSL; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-    test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
-    test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-    test -r ~/.bashrc && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bashrc
-    echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
-    sudo apt-get install build-essential curl file git
+    echo "Windows, skipping homebrew"
   else
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   fi
@@ -73,12 +68,20 @@ installNode() {
 
 
 installGit() {
-  brew install git
+  if isWSL; then
+    sudo apt install git
+  else
+    brew install git
+  fi
   # Do the ssh thing too?
 }
 
 installTree() {
-  brew install tree
+  if isWSL; then
+    sudo apt install tree
+  else
+    brew install tree
+  fi
 }
 
 installHeroku() {
@@ -139,12 +142,12 @@ installMongo() {
 }
 
 ## Let's Go!
-# installDotFiles
-# updateAPT
-# installHomebrew
- installNode
-#installGit
-#installTree
-#installHeroku
-# installPostgres
-# installMongo
+installDotFiles
+updateAPT
+installHomebrew
+installNode
+installGit
+installTree
+installHeroku
+installPostgres
+installMongo
