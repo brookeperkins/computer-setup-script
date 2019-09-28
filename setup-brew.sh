@@ -50,27 +50,21 @@ installHomebrew() {
 }
 
 installNode() {
+
   mkdir ~/.nvm
-  if isWSL; then
-    export NVM_ROOT="/home/linuxbrew/.linuxbrew/opt/nvm"
-  else
-    export NVM_ROOT="/usr/local/opt/nvm"
-  fi
-  brew install nvm
 
-  echo "export NVM_HOME=$HOME/.nvm" >> ~/.nvmrc
-  echo "export NVM_ROOT=$NVM_ROOT" >> ~/.nvmrc
-  echo '[ -s "$NVM_ROOT/nvm.sh" ] && . "$NVM_ROOT/nvm.sh"' >> ~/.nvmrc
-  echo '[ -s "$NVM_ROOT/etc/bash_completion" ] && . "$NVM_ROOT/etc/bash_completion"' >> ~/.nvmrc
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+  export NVM_DIR="$HOME/.nvm"
+
+  echo "export NVM_DIR=$NVM_DIR" >> ~/.nvmrc
+  echo '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"' >> ~/.nvmrc
+  echo '[ -s "$NVM_DIR/etc/bash_completion" ] && . "$NVM_DIR/etc/bash_completion"' >> ~/.nvmrc
   echo "source ~/.nvmrc" >> ~/.bashrc
-  source ~/.nvmrc
 
-  #export NVM_DIR="$HOME/.nvm"
-  #[ -s "$NVM_ROOT/nvm.sh" ] && . "$NVM_ROOT/nvm.sh"
-  #[ -s "$NVM_ROOT/etc/bash_completion" ] && . "$NVM_ROOT/etc/bash_completion"
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/etc/bash_completion" ] && . "$NVM_DIR/etc/bash_completion"
 
   nvm install stable
-  nvm use stable
 
   npm install -g nodemon
   npm install -g live-server
@@ -96,7 +90,11 @@ installHeroku() {
 }
 
 installAWS() {
-  brew install awscli
+  if isWSL; then
+    sudo apt-get install awscli
+  else
+    brew install awscli
+  fi
 }
 
 installPostgres() {
@@ -144,9 +142,9 @@ installMongo() {
 # installDotFiles
 # updateAPT
 # installHomebrew
-# installNode
+ installNode
 #installGit
 #installTree
 #installHeroku
- installPostgres
+# installPostgres
 # installMongo
