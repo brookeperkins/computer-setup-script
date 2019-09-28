@@ -9,10 +9,6 @@ alias stop-pg="pg_ctl stop -D /home/linuxbrew/.linuxbrew/var/postgres"
 # This allows you to open html files in Chrome more easily by typing "chrome filename".
 alias chrome="/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe"
 
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm   [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion"
-
 # This allows you to switch between the Ubuntu root and your Windows Root.
 WINDOWS_USER=$(/mnt/c/Windows/System32/cmd.exe /c 'echo %USERNAME%' | sed -e 's/\r//g')
 

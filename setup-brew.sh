@@ -105,8 +105,10 @@ installPostgres() {
     wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
     sudo apt-get update
     sudo apt-get install postgresql-10
+    pg_ctl start -D /home/linuxbrew/.linuxbrew/var/postgres -l logfile
   else
     brew install postgres
+    brew services start postgresql
   fi
 
   echo "Create Postgres user and default database"
