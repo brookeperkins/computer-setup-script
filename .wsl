@@ -13,7 +13,7 @@ alias chrome="/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.ex
 WINDOWS_USER=$(/mnt/c/Windows/System32/cmd.exe /c 'echo %USERNAME%' | sed -e 's/\r//g')
 
 # wr evaluates to the absolute path to your Windows user's root.
-export wr=~/../../mnt/c/Users/$WINDOWS_USER/
+export wr=/mnt/c/Users/$WINDOWS_USER/
 
 # This gives us a quick way of moving directly to the Windows root
 alias cdwr='cd "$wr"'
