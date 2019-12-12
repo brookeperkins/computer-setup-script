@@ -13,6 +13,3 @@ verify() {
 }
 
 alias start-mongo='sudo mongod --dbpath ~/data/db'
-
-# For the vim nerds, puts vim keybindings in the terminal, if you want them.
-set -o vi
