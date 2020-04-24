@@ -1,114 +1,133 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-isWSL() {
-  UNAME=$(uname -r)
-  [ -z "${UNAME##*Microsoft*}" ];
+set -e
+
+function info {
+  echo -e "\e[34m${1}\e[0m"
 }
 
-installDotFiles() {
-  clear
-  echo "Installing Core Aliases and Helpers"
-  curl https://raw.githubusercontent.com/codefellows/computer-setup/master/.gitprompt --output .gitprompt
-  curl https://raw.githubusercontent.com/codefellows/computer-setup/master/.aliases --output .aliases
-  echo "source ~/.gitprompt" >> ~/.bashrc
-  echo "source ~/.aliases" >> ~/.bashrc
-  source ~/.gitprompt
-  source ~/.aliases
-
-  ## For WSL Users, install an additional dotfile
-  if isWSL; then
-    curl https://raw.githubusercontent.com/codefellows/computer-setup/master/.wsl --output .wsl
-    echo "source ~/.wsl" >> ~/.bashrc
-    source ~/.wsl
-  fi
-
-  mkdir ~/.cache
-  chmod 777 ~/.cache
+function warn {
+  echo -e "\e[33m${1}\e[0m"
 }
 
-updateAPT() {
-  if isWSL; then
+function error {
+  echo -e "\e[31m${1}\e[0m" 1>&2
+  exit 1
+}
+ 
+OS=$(uname -s)
+if [[ $OS != Linux && $OS != Mac ]]; then
+  error "Unsupported Operating System: ${OS}"
+fi
+
+if [[ -z $(command -v apt) ]]; then
+  error "Unsupported Linux Distribution"
+fi
+
+function updateAPT {
+  if [[ $OS == Linux ]]; then
     clear
-    echo "Updating APT Database"
-    sudo apt-get update
-    sudo apt-get upgrade
+    info "Updating APT Database"
+    sudo apt update
+    sudo apt -y upgrade
     sudo apt autoremove
   fi
 }
 
-installHomebrew() {
-  clear
-  echo "Istalling Homebrew"
-  if isWSL; then
-    echo "Windows, skipping homebrew"
-  else
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+function installHomebrew {
+  if [[ $OS != Mac ]]; then
+    return
   fi
+  
+  clear
+
+  if [[ -n $(command -v brew) ]]; then
+    warn "Homebrew already installed"
+    return
+  fi
+
+  info "Istalling Homebrew"
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
-installNode() {
+function installNVM {
+  clear
 
+  if [[ -f "$HOME/.nvm/nvm.sh" ]]; then
+    source $HOME/.nvm/nvm.sh
+  fi
+  
+  if [[ -n $(command -v nvm) ]]; then
+    warn "NVM already installed"
+    return
+  fi
+
+  info "Installing nvm"
   mkdir ~/.nvm
 
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
   export NVM_DIR="$HOME/.nvm"
 
-  echo "export NVM_DIR=$NVM_DIR" >> ~/.nvmrc
-  echo '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"' >> ~/.nvmrc
-  echo '[ -s "$NVM_DIR/etc/bash_completion" ] && . "$NVM_DIR/etc/bash_completion"' >> ~/.nvmrc
-  echo "source ~/.nvmrc" >> ~/.bashrc
-
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-  [ -s "$NVM_DIR/etc/bash_completion" ] && . "$NVM_DIR/etc/bash_completion"
-
-  nvm install stable
-
-  npm install -g nodemon
-  npm install -g live-server
-  npm install -g json-server
+  export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 }
 
+function installNode {
+  clear
+  info "Installing node.js"
+  nvm install node
+  npm install -g eslint
+}
 
-installGit() {
-  if isWSL; then
-    sudo apt install git
+function installGit {
+  clear
+  if [[ -n $(command -v git) ]]; then
+    warn "git already installed"
+    return
+  fi
+
+  info "Installing git"
+  if [[ $OS == Linux ]]; then
+    sudo apt install -y git
   else
     brew install git
   fi
-  # Do the ssh thing too?
 }
 
-installTree() {
-  if isWSL; then
-    sudo apt install tree
-  else
-    brew install tree
+function installHeroku {
+  if [[ -n $(command -v heroku) ]]; then
+    warn "Heroku already installed"
+    return
   fi
-}
 
-installHeroku() {
-  if isWSL; then
+  if [[ $OS == Linux ]]; then
     curl https://cli-assets.heroku.com/install.sh | sh
   else
     brew tap heroku/brew && brew install heroku
   fi
 }
 
-installAWS() {
-  if isWSL; then
-    sudo apt-get install awscli
-  else
-    brew install awscli
-  fi
-}
-
-installPostgres() {
+function installPostgres {
   clear
-  if isWSL; then
+
+  if [[ -n $(command -v psql) ]]; then
+    warn "postgres already installed"
+    return
+  fi
+
+  info "Installing postgres"
+  if [[ $OS == Linux ]]; then
     wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-    sudo apt-get update
-    sudo apt-get install postgresql-10
-    sudo service postgresql start
+    sudo apt update
+    sudo apt install -y postgresql
+    
+    if [[ -n $(command -v systemctl) ]]; then
+      sudo systemctl enable postgresql
+      sudo systemctl start postgresql
+    else
+      sudo service postrgesql start
+    fi
+    
   else
     brew install postgres
     brew services start postgresql
@@ -128,17 +147,26 @@ installPostgres() {
   createdb -O `whoami` `whoami`
 }
 
-installMongo() {
-
+function installMongo {
   clear
-  echo "Installing 'mongo database server and client'"
 
-  if isWSL; then
-    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
-    sudo apt-get update
-    sudo apt-get install -y mongodb-org
-    sudo mkdir -p ~/data/db
-    ## TODO:  Auto Start?
+  if [[ -n $(command -v mongo) ]]; then
+    warn "mongo already installed"
+    return
+  fi
+
+  info "Installing 'mongo database server and client'"
+
+  if [[ $OS == Linux ]]; then
+    wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
+    echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
+    sudo apt update
+    sudo apt install -y mongodb-org
+
+    if [[ -n $(command -v systemctl) ]]; then
+      sudo systemctl enable mongodb
+      sudo systemctl start mongodb
+    fi
   else
     brew tap mongodb/brew
     brew install mongodb-community
@@ -147,13 +175,20 @@ installMongo() {
 
 }
 
-## Let's Go!
-installDotFiles
 updateAPT
 installHomebrew
+installNVM
 installNode
 installGit
-installTree
 installHeroku
 installPostgres
 installMongo
+
+echo "GIT `git --version`"
+echo "NODE `node --version`"
+echo "NPM `npm --version`"
+echo "HEROKU `heroku --version`"
+echo "PSQL `psql --version`"
+echo "MONGO `mongo --version`"
+
+echo -e "\n\n\e[1m\e[32mSUCCESS! :)\e[0m\n\n"
