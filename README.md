@@ -31,7 +31,7 @@ This will install the needed files. Follow any directions that pop up and restar
 * Run this command to setup your system and install the default software utilities and applications
   * This process can take > 1 hour ...
     ```
-    bash <(curl -s https://raw.githubusercontent.com/codefellows/computer-setup/master/setup.sh)
+    bash <(curl -s https://raw.githubusercontent.com/alchemycodelab/computer-setup-script/master/setup.sh)
     ```
 
 ### 2. Install Visual Studio Code
