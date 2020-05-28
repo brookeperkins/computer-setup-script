@@ -78,3 +78,10 @@ VSCode is where you will doing the vast majority of your work. Since VSCode reli
     ![vs code](https://code.visualstudio.com/assets/docs/setup/mac/shell-command.png)
 3. Quit VS Code
 
+#### Windows Users Only
+
+1. Launch (open) the VS Code app
+2. Open the Command Palette by typing Ctrl+P
+3. paste `ext install ms-vscode-remote.remote-wsl` into the input box
+4. Exit VS Code
+
