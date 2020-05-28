@@ -34,17 +34,41 @@ This will install the needed files. Follow any directions that pop up and restar
     bash <(curl -s https://raw.githubusercontent.com/alchemycodelab/computer-setup-script/master/setup.sh)
     ```
 
-### 2. Install Visual Studio Code
+### 2. Configure Git
+
+Like artists, programmers sign their work. Let's configure Git to sign your commits with your name and email address.
+
+Make sure you sign up for an account at Github <a href="https://github.com" target="_blank">here</a>.
+
+**WARNING:** Before running the following commands, replace `YOUR FULL NAME` and `YOUR EMAIL ADDRESS` with the name and email from <a href="https://github.com/settings/profile" target="_blank">your GitHub account</a>.
+
+```
+git config --global user.name 'YOUR FULL NAME'
+git config --global user.email 'YOUR EMAIL ADDRESS'
+```
+
+The terminal does not send success messages, in order to double check that you have successfully assigned your username and email:
+
+```
+git config --list
+```
+
+Your terminal should output the following lines:
+
+```
+user.email='YOUR EMAIL ADDRESS'
+user.name='YOUR FULL NAME'
+```
+
+### 3. Install Visual Studio Code
 
 VSCode is a code editor that comes with many helpful features to streamline your development process. It also comes with an integrated terminal, debugging capabilities, and a very helpful built-in source control UI.
 
 VSCode is where you will doing the vast majority of your work. Since VSCode relies on a GUI, this will be installed on through Windows, not Ubuntu.
 
-1. Vist [VSCode](https://code.visualstudio.com/?wt.mc_id=adw-brand&gclid=Cj0KCQjw5-TXBRCHARIsANLixNw00R2vbdqnzLml-GvzCgbyqmgcAb9kyRQsC5LAPVS6tuBDZ9ws9pgaAsiLEALw_wcB) to download VSCode.
+1. Vist [VSCode](https://code.visualstudio.com) to download VSCode.
 1. Launch the installer and follow the onscreen prompts.
 1. When you reach the section for `Additional tasks`, make sure every box is checked.
 1. Click install and continue to follow and onscreen prompts.
 
-Once you are done, you can open up Terminal (Mac)/Ubuntu App (Windows)and type `code` to open VSCode. This may or may not require a restart first. 
-
-#### Notes on VSCode for Windows
+<!-- Once you are done, you can open up Terminal (Mac)/Ubuntu App (Windows)and type `code` to open VSCode. This may or may not require a restart first. -->
