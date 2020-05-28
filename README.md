@@ -71,4 +71,10 @@ VSCode is where you will doing the vast majority of your work. Since VSCode reli
 1. When you reach the section for `Additional tasks`, make sure every box is checked.
 1. Click install and continue to follow and onscreen prompts.
 
-<!-- Once you are done, you can open up Terminal (Mac)/Ubuntu App (Windows)and type `code` to open VSCode. This may or may not require a restart first. -->
+#### Mac OSX Users Only
+
+1. Launch (open) the VS Code app
+2. Open the Command Palette by typing ⇧⌘P (SHIFT + COMMAND + P) and type 'shell command' to find, and then select, the "Shell Command: Install 'code' command in PATH" command.
+    ![vs code](https://code.visualstudio.com/assets/docs/setup/mac/shell-command.png)
+3. Quit VS Code
+
