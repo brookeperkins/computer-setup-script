@@ -1,5 +1,17 @@
 # Computer Setup
 
+## Material Requirements
+
+You are required to supply your own laptop that meets the below requirements. Chromebooks are **not** suitable for this course, since you can’t directly control installed software. Many students use Macs. You are responsible for the upkeep and maintenance of your computer throughout the course. 
+
+**At a minimum, your computer will need:**
+
+* A 64-bit Operating System, like macOS, Ubuntu or Windows 10 Pro.
+* To be fully up to date, with the latest version of its operating system and all security updates installed.
+* At least 50GB of free space on the hard drive.
+* At least 8GB of RAM. 16GB RAM strongly preferred.
+* To be free of viruses, and in general working order.
+
 ## Windows Users
 
 Before you begin check to make sure that you have the [most recent version of Windows 10](https://support.microsoft.com/en-us/help/4028685/windows-10-get-the-update).
