@@ -1,6 +1,6 @@
 # Computer Setup
 
-## Material Requirements
+## Hardware (Computer) Requirements
 
 You are required to supply your own laptop that meets the below requirements. Chromebooks are **not** suitable for this course, since you can’t directly control installed software. Many students use Macs. You are responsible for the upkeep and maintenance of your computer throughout the course. 
 
@@ -76,7 +76,7 @@ user.name='YOUR FULL NAME'
 
 VSCode is a code editor that comes with many helpful features to streamline your development process. It also comes with an integrated terminal, debugging capabilities, and a very helpful built-in source control UI.
 
-VSCode is where you will doing the vast majority of your work. Since VSCode relies on a GUI, this will be installed on through Windows, not Ubuntu.
+VSCode is where you will doing the vast majority of your work. For Windows users, because VSCode relies on a GUI you will install it through Windows, not Ubuntu.
 
 1. Vist [VSCode](https://code.visualstudio.com) to download VSCode.
 1. Launch the installer and follow the onscreen prompts.
