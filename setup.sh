@@ -16,7 +16,7 @@ function error {
 }
  
 OS=$(uname -s)
-if [[ $OS != Linux && $OS != Mac ]]; then
+if [[ $OS != Linux && $OS != Darwin ]]; then
   error "Unsupported Operating System: ${OS}"
 fi
 
@@ -35,7 +35,7 @@ function updateAPT {
 }
 
 function installHomebrew {
-  if [[ $OS != Mac ]]; then
+  if [[ $OS != Darwin ]]; then
     return
   fi
   
