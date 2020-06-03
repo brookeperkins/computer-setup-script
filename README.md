@@ -52,7 +52,7 @@ Like artists, programmers sign their work. Let's configure Git to sign your comm
 
 Make sure you sign up for an account at Github <a href="https://github.com" target="_blank">here</a>.
 
-**WARNING:** Before running the following commands, replace `YOUR FULL NAME` and `YOUR EMAIL ADDRESS` with the name and email from <a href="https://github.com/settings/profile" target="_blank">your GitHub account</a>.
+**WARNING:** Before running the following commands, **replace `YOUR FULL NAME` and `YOUR EMAIL ADDRESS` with the name and email from <a href="https://github.com/settings/profile" target="_blank">your GitHub account</a>.**
 
 ```
 git config --global user.name 'YOUR FULL NAME'
@@ -65,7 +65,7 @@ The terminal does not send success messages, in order to double check that you h
 git config --list
 ```
 
-Your terminal should output the following lines:
+Your terminal should output the following lines (**but with your email address you used on GitHub and your full name!**):
 
 ```
 user.email='YOUR EMAIL ADDRESS'
