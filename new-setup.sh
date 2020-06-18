@@ -28,9 +28,9 @@ yum-update() {
 }
 
 linux-update() {
-  if [[ distro == debian ]]; then
+  if [[ $distro == debian ]]; then
     apt-update
-  elif [[ distro == redhat ]]; then
+  elif [[ $distro == redhat ]]; then
     yum-update
   fi
 }
@@ -90,9 +90,9 @@ install-mongo-darwin() {
 install-mongo() {
   app-check mongo && return 0
   if [[ $OS == Linux ]]; then
-    if [[ distro == debian ]]; then
+    if [[ $distro == debian ]]; then
       install-mongo-debian
-    elif [[ distro == redhat ]]; then
+    elif [[ $distro == redhat ]]; then
       install-mongo-redhat
     fi
   else
@@ -148,9 +148,9 @@ EOF
 install-git() {
   app-check git && return 0
   if [[ $OS == Linux ]]; then
-    if [[ distro == debian ]]; then
+    if [[ $distro == debian ]]; then
       sudo apt install -y git
-    elif [[ distro == redhat ]]; then
+    elif [[ $distro == redhat ]]; then
       sudo yum install -y git
     fi
   else
