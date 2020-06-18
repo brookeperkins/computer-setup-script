@@ -187,6 +187,7 @@ init() {
 }
 
 
+
 set -e
 if [[ ! -d ~/.alchemy ]]; then
   mkdir -p ~/.alchemy/downloads
@@ -198,5 +199,6 @@ init
 install-git
 install-mongo
 install-nvm
+install-heroku
 
 check-all-versions
