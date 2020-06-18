@@ -212,6 +212,6 @@ init
 install-git
 install-nvm
 install-heroku
-install-mongo-redhat
+install-mongo
 
 check-all-versions
