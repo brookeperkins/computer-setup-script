@@ -68,7 +68,7 @@ install-mongo-debian() {
 
 install-mongo-redhat() {
   # TODO
-  # Change this to the git location for the .repo file 
+  # Change this to the git location for the .repo file
   sudo curl -o- https://github.com/alchemycodelab/computer-setup-script/blob/script-rewrite/lib/mongodb-org-4.2.repo > /etc/yum.repos.d
   sudo yum install -y mongodb-org
   # installing MongoBD Compass, as well
@@ -164,7 +164,8 @@ install-homebrew() {
 }
 
 distro='none'
-apps=('git' 'node' 'npm' 'heroku' 'mongo')
+apps=('git' 'node' 'npm' 'eslint' 'heroku' 'mongo')
+OS=$(uname -s)
 
 distro-check() {
   if [[ $(command -v apt) ]]; then
