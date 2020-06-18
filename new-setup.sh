@@ -76,19 +76,19 @@ version-check() {
 }
 
 install-mongo-debian() {
-  curl -o- https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
+  curl -qo- https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
   echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
   $apt update
   $apt install mongodb-org
 
-  curl -o- https://downloads.mongodb.com/compass/mongodb-compass-community_1.21.2_amd64.deb > ~/.alchemy/downloads/mongodb-compass-community_1.21.2_amd64.deb
+  curl -qo- https://downloads.mongodb.com/compass/mongodb-compass-community_1.21.2_amd64.deb > ~/.alchemy/downloads/mongodb-compass-community_1.21.2_amd64.deb
   sudo dpkg -i ~/.alchemy/downloads/mongodb-compass-community_1.21.2_amd64.deb
 }
 
 install-mongo-redhat() {
   # TODO
   # Change this to the git location for the .repo file
-  curl -o- https://raw.githubusercontent.com/alchemycodelab/computer-setup-script/script-rewrite/lib/mongodb-org-4.2.repo | sudo tee /etc/yum.repos.d/mongodb-org-4.2.repo
+  curl -qo- https://raw.githubusercontent.com/alchemycodelab/computer-setup-script/script-rewrite/lib/mongodb-org-4.2.repo | sudo tee /etc/yum.repos.d/mongodb-org-4.2.repo
 
   spin
   $y_install mongodb-org
@@ -113,6 +113,7 @@ install-mongo-darwin() {
 
 install-mongo() {
   app-check mongo && return 0
+
   if [[ $OS == Linux ]]; then
     if [[ $distro == debian ]]; then
       install-mongo-debian
@@ -143,6 +144,10 @@ install-heroku() {
 }
 
 install-nvm() {
+  if [[ -f "$HOME/.nvm/nvm.sh" ]]; then
+    source $HOME/.nvm/nvm.sh
+  fi
+  
   app-check nvm && return 0
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 
@@ -212,6 +217,6 @@ init
 install-git
 install-nvm
 install-heroku
-install-mongo
+install-mongocurl -qo- https://raw.githubusercontent.com/alchemycodelab/computer-setup-script/script-rewrite/new-setup.sh | bash
 
 check-all-versions
