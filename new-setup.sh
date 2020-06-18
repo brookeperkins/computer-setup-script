@@ -147,7 +147,7 @@ install-nvm() {
   if [[ -f "$HOME/.nvm/nvm.sh" ]]; then
     source $HOME/.nvm/nvm.sh
   fi
-  
+
   app-check nvm && return 0
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 
@@ -217,6 +217,6 @@ init
 install-git
 install-nvm
 install-heroku
-install-mongocurl -qo- https://raw.githubusercontent.com/alchemycodelab/computer-setup-script/script-rewrite/new-setup.sh | bash
+install-mongo
 
 check-all-versions
