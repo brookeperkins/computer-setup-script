@@ -68,8 +68,8 @@ install-mongo-debian() {
 
 install-mongo-redhat() {
   # TODO
-  # Change this to the git location for the .repo file
-  sudo cp ./lib/mongodb-org-4.2.repo /etc/yum.repos.hdeb
+  # Change this to the git location for the .repo file 
+  sudo curl -o- https://github.com/alchemycodelab/computer-setup-script/blob/script-rewrite/lib/mongodb-org-4.2.repo > /etc/yum.repos.d
   sudo yum install -y mongodb-org
   # installing MongoBD Compass, as well
   curl -o- https://downloads.mongodb.com/compass/mongodb-compass-1.21.2.x86_64.rpm > ~/.alchemy/downloads/mongodb-compass-1.21.2.x86_64.rpm
