@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-DEBIAN_FRONTEND=noninteractive
-apt="sudo apt-get -qq -y"
+# DEBIAN_FRONTEND=noninteractive
+# apt="sudo apt-get -qq -y"
+apt="sudo apt-get"
 y_install="sudo yum install -y -q -e 0"
 
 usage() { echo "Usage: $0 " 1>&2; exit 1; }
@@ -20,7 +21,7 @@ _spin() {
 }
 
 spin() {
-  _spin &
+  _spin & 2>/dev/null
   SPIN_PID=$!
 }
 
