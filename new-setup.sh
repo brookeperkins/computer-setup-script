@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-
-apt="DEBIAN_FRONTEND=noninteractive sudo apt-get -qq -y"
+DEBIAN_FRONTEND=noninteractive
+apt="sudo apt-get -qq -y"
 y_install="sudo yum install -y -q -e 0"
 
 usage() { echo "Usage: $0 " 1>&2; exit 1; }
@@ -38,16 +38,16 @@ warn() {
 
 apt-update() {
   info "Updating system packages"
+  spin
   $apt update
   $apt upgrade
-  $apt autoremove
+  end-spin
 }
 
 yum-update() {
   info "Updating system packages"
   spin
   sudo yum update -y -q -e 0
-  sudo yum autoremove -y -q -e 0
   end-spin
 }
 
