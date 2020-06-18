@@ -1,29 +1,54 @@
 #!/usr/bin/env bash
 
+apt="DEBIAN_FRONTEND=noninteractive sudo apt-get -qq -y"
+y_install="sudo yum install -y -q -e 0"
+
 usage() { echo "Usage: $0 " 1>&2; exit 1; }
 
+_spin() {
+  spinner="\\|/-\\|/-"
+  tput civis # make cursor invisible
+  while :
+  do
+    for i in `seq 0 7`
+    do
+      echo -n "${spinner:$i:1}"
+      echo -en "\010"
+      sleep 0.1
+    done
+  done
+}
+
+spin() {
+  _spin &
+  SPIN_PID=$!
+}
+
+end-spin() {
+  kill -9 $SPIN_PID >/dev/null 2>&1
+  tput cnorm
+}
+
 info() {
-  echo -e "\e[34m${1}\e[0m"
+  echo -e "\e[1;36m${1}\e[0m" # cyan
 }
 warn() {
-  echo -e "\e[33m${1}\e[0m"
-}
-error() {
-  echo -e "\e[31m${1}\e[0m" 1>&2
-  exit 1
+  echo -e "\e[1;33m${1}\e[0m" # yellow
 }
 
 apt-update() {
   info "Updating system packages"
-  DEBIAN_FRONTEND=noninteractive sudo apt-get -qq -y update
-  DEBIAN_FRONTEND=noninteractive sudo apt-get -qq -y upgrade
-  DEBIAN_FRONTEND=noninteractive sudo apt-get -qq -y autoremove
+  $apt update
+  $apt upgrade
+  $apt autoremove
 }
 
 yum-update() {
   info "Updating system packages"
+  spin
   sudo yum update -y -q -e 0
   sudo yum autoremove -y -q -e 0
+  end-spin
 }
 
 linux-update() {
@@ -53,16 +78,11 @@ version-check() {
 install-mongo-debian() {
   curl -o- https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
   echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
-  DEBIAN_FRONTEND=noninteractive sudo apt-get -qq update
-  DEBIAN_FRONTEND=noninteractive sudo apt-get -qq install -y mongodb-org
-  # installing MongoDB Compass, as well
+  $apt update
+  $apt install mongodb-org
+
   curl -o- https://downloads.mongodb.com/compass/mongodb-compass-community_1.21.2_amd64.deb > ~/.alchemy/downloads/mongodb-compass-community_1.21.2_amd64.deb
   sudo dpkg -i ~/.alchemy/downloads/mongodb-compass-community_1.21.2_amd64.deb
-
-  if [[ -n $(command -v systemctl) ]]; then
-    sudo systemctl enable mongodb
-    sudo systemctl start mongodb
-  fi
 }
 
 install-mongo-redhat() {
@@ -70,16 +90,19 @@ install-mongo-redhat() {
   # Change this to the git location for the .repo file
   curl -o- https://raw.githubusercontent.com/alchemycodelab/computer-setup-script/script-rewrite/lib/mongodb-org-4.2.repo | sudo tee /etc/yum.repos.d/mongodb-org-4.2.repo
 
-  sudo yum install -y -q -e 0 mongodb-org
+  spin
+  $y_install mongodb-org
+  end-spin
 
+  info "Downloading MongoDB Compass..."
+  spin
+  curl -so- https://downloads.mongodb.com/compass/mongodb-compass-1.21.2.x86_64.rpm > ~/.alchemy/downloads/mongodb-compass-1.21.2.x86_64.rpm
+  end-spin
   info "Installing MongoDB Compass..."
-  curl -o- https://downloads.mongodb.com/compass/mongodb-compass-1.21.2.x86_64.rpm > ~/.alchemy/downloads/mongodb-compass-1.21.2.x86_64.rpm
-  sudo yum install -y -q -e 0 ~/.alchemy/downloads/mongodb-compass-1.21.2.x86_64.rpm
-
-  if [[ -n $(command -v systemctl) ]]; then
-    sudo systemctl enable mongodb
-    sudo systemctl start mongodb
-  fi
+  sleep 2
+  spin
+  $y_install ~/.alchemy/downloads/mongodb-compass-1.21.2.x86_64.rpm
+  end-spin
 }
 
 install-mongo-darwin() {
@@ -95,6 +118,10 @@ install-mongo() {
       install-mongo-debian
     elif [[ $distro == redhat ]]; then
       install-mongo-redhat
+    fi
+    if [[ -n $(command -v systemctl) ]]; then
+      sudo systemctl enable mongodb
+      sudo systemctl start mongodb
     fi
   else
     install-mongo-darwin
@@ -113,32 +140,15 @@ check-all-versions() {
 install-heroku() {
   app-check heroku && return 0
   curl -o- https://cli-assets.heroku.com/install.sh | bash >/dev/null 2>&1
-  echo "export PATH=\"/usr/local/bin:$PATH\" >> .bash_profile"
 }
 
 install-nvm() {
-  if [[ -f "$HOME/.nvm/nvm.sh" ]]; then
-    source $HOME/.nvm/nvm.sh
-  fi
-
   app-check nvm && return 0
-
-  mkdir ~/.nvm
-
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-  export NVM_DIR="$HOME/.nvm"
 
+  export NVM_DIR="$HOME/.nvm"
   export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-
-  info "Copying nvm bits to profile"
-
-  cat >> ~/.bash_profile<<-EOF
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-EOF
 
   info "Installing node"
   nvm install node
@@ -150,9 +160,13 @@ install-git() {
   app-check git && return 0
   if [[ $OS == Linux ]]; then
     if [[ $distro == debian ]]; then
-      sudo apt install -y git
+      spin
+      $apt install git
+      end-spin
     elif [[ $distro == redhat ]]; then
-      sudo yum install -y -q -e 0 git
+      spin
+      $y_install git
+      end-spin
     fi
   else
     brew install git
@@ -186,6 +200,7 @@ init() {
 distro='none'
 apps=('git' 'node' 'npm' 'eslint' 'heroku' 'mongo')
 OS=$(uname -s)
+trap "kill -9 $SPIN_PID" `seq 0 15`
 
 set -e
 if [[ ! -d ~/.alchemy ]]; then
@@ -195,9 +210,8 @@ fi
 init
 
 install-git
-install-mongo
-sleep 8
 install-nvm
 install-heroku
+install-mongo-redhat
 
 check-all-versions
