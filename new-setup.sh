@@ -71,7 +71,8 @@ install-mongo-redhat() {
   curl -o- https://raw.githubusercontent.com/alchemycodelab/computer-setup-script/script-rewrite/lib/mongodb-org-4.2.repo | sudo tee /etc/yum.repos.d/mongodb-org-4.2.repo
 
   sudo yum install -y -q -e 0 mongodb-org
-  # installing MongoBD Compass, as well
+
+  info "Installing MongoDB Compass..."
   curl -o- https://downloads.mongodb.com/compass/mongodb-compass-1.21.2.x86_64.rpm > ~/.alchemy/downloads/mongodb-compass-1.21.2.x86_64.rpm
   sudo yum install -y -q -e 0 ~/.alchemy/downloads/mongodb-compass-1.21.2.x86_64.rpm
 
@@ -151,7 +152,7 @@ install-git() {
     if [[ $distro == debian ]]; then
       sudo apt install -y git
     elif [[ $distro == redhat ]]; then
-      sudo yum install -y git
+      sudo yum install -y -q -e 0 git
     fi
   else
     brew install git
@@ -195,6 +196,7 @@ init
 
 install-git
 install-mongo
+sleep 8
 install-nvm
 install-heroku
 
