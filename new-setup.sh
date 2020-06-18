@@ -15,16 +15,15 @@ error() {
 
 apt-update() {
   info "Updating system packages"
-  sudo apt update
-  sudo apt upgrade -y
-  sudo apt autoremove -y
+  DEBIAN_FRONTEND=noninteractive sudo apt-get -qq -y update
+  DEBIAN_FRONTEND=noninteractive sudo apt-get -qq -y upgrade
+  DEBIAN_FRONTEND=noninteractive sudo apt-get -qq -y autoremove
 }
 
 yum-update() {
   info "Updating system packages"
-  sudo yum update -y
-  sudo yum upgrade -y
-  sudo yum autoremove -y
+  sudo yum update -y -q -e 0
+  sudo yum autoremove -y -q -e 0
 }
 
 linux-update() {
@@ -54,8 +53,8 @@ version-check() {
 install-mongo-debian() {
   curl -o- https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
   echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
-  sudo apt update
-  sudo apt install -y mongodb-org
+  DEBIAN_FRONTEND=noninteractive sudo apt-get -qq update
+  DEBIAN_FRONTEND=noninteractive sudo apt-get -qq install -y mongodb-org
   # installing MongoDB Compass, as well
   curl -o- https://downloads.mongodb.com/compass/mongodb-compass-community_1.21.2_amd64.deb > ~/.alchemy/downloads/mongodb-compass-community_1.21.2_amd64.deb
   sudo dpkg -i ~/.alchemy/downloads/mongodb-compass-community_1.21.2_amd64.deb
@@ -71,10 +70,10 @@ install-mongo-redhat() {
   # Change this to the git location for the .repo file
   curl -o- https://raw.githubusercontent.com/alchemycodelab/computer-setup-script/script-rewrite/lib/mongodb-org-4.2.repo | sudo tee /etc/yum.repos.d/mongodb-org-4.2.repo
 
-  sudo yum install -y mongodb-org
+  sudo yum install -y -q -e 0 mongodb-org
   # installing MongoBD Compass, as well
   curl -o- https://downloads.mongodb.com/compass/mongodb-compass-1.21.2.x86_64.rpm > ~/.alchemy/downloads/mongodb-compass-1.21.2.x86_64.rpm
-  sudo yum install -y ~/.alchemy/downloads/mongodb-compass-1.21.2.x86_64.rpm
+  sudo yum install -y -q -e 0 ~/.alchemy/downloads/mongodb-compass-1.21.2.x86_64.rpm
 
   if [[ -n $(command -v systemctl) ]]; then
     sudo systemctl enable mongodb
@@ -113,6 +112,7 @@ check-all-versions() {
 install-heroku() {
   app-check heroku && return 0
   curl -o- https://cli-assets.heroku.com/install.sh | bash >/dev/null 2>&1
+  echo "export PATH=\"/usr/local/bin:$PATH\" >> .bash_profile"
 }
 
 install-nvm() {
@@ -133,7 +133,7 @@ install-nvm() {
 
   info "Copying nvm bits to profile"
 
-  cat >> ~/.bash_profile <<- EOF
+  cat >> ~/.bash_profile<<-EOF
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -163,10 +163,6 @@ install-homebrew() {
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
-distro='none'
-apps=('git' 'node' 'npm' 'eslint' 'heroku' 'mongo')
-OS=$(uname -s)
-
 distro-check() {
   if [[ $(command -v apt) ]]; then
     distro='debian'
@@ -186,12 +182,13 @@ init() {
   fi
 }
 
-
+distro='none'
+apps=('git' 'node' 'npm' 'eslint' 'heroku' 'mongo')
+OS=$(uname -s)
 
 set -e
 if [[ ! -d ~/.alchemy ]]; then
   mkdir -p ~/.alchemy/downloads
-
 fi
 
 init
