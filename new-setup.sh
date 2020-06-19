@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# DEBIAN_FRONTEND=noninteractive
+DEBIAN_FRONTEND=noninteractive
 apt="sudo apt-get -qq -y"
 y_install="sudo yum install -y -q -e 0"
 
@@ -18,6 +18,7 @@ warn() {
 }
 
 apt-update() {
+  # Checking for curl, as the script may have been distributed by another means than using curl to dl from github
   app-check curl || $apt install curl > /dev/null
 
   info "Updating system packages"
@@ -95,8 +96,8 @@ install-mongo() {
       install-mongo-redhat
     fi
     if [[ -n $(command -v systemctl) ]]; then
-      sudo systemctl enable mongodb
-      sudo systemctl start mongodb
+      sudo systemctl enable mongod
+      sudo systemctl start mongod
     fi
   else
     install-mongo-darwin
@@ -114,7 +115,7 @@ check-all-versions() {
 
 install-heroku() {
   app-check heroku && return 0
-  curl -o- https://cli-assets.heroku.com/install.sh | bash >/dev/null 2>&1
+  curl -so- https://cli-assets.heroku.com/install.sh | bash >/dev/null 2>&1
 }
 
 install-nvm() {
@@ -123,7 +124,7 @@ install-nvm() {
   fi
 
   app-check nvm && return 0
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+  curl -so- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash >/dev/null
 
   export NVM_DIR="$HOME/.nvm"
   export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -139,7 +140,7 @@ install-git() {
   app-check git && return 0
   if [[ $OS == Linux ]]; then
     if [[ $distro == debian ]]; then
-      $apt install git
+      $apt install git >/dev/null
     elif [[ $distro == redhat ]]; then
       $y_install git
     fi
@@ -164,6 +165,7 @@ distro-check() {
 }
 
 init() {
+  echo -s "\nThis script will prompt you, perhaps twice, for your password.  This is "
   if [[ ! -d ~/.alchemy ]]; then
     mkdir -p ~/.alchemy/downloads
   fi
@@ -199,12 +201,13 @@ main() {
   cleanup
 }
 
-while getopts 'ngmh' flag; do
+while getopts 'ngmhv' flag; do
   case "${flag}" in
     n) install-nvm ; exit 0 ;;
     g) init ; install-git ; exit 0 ;;
     m) init ; install-mongo ; exit 0 ;;
     h) usage ; exit 0 ;;
+    v) check-all-versions ; exit 0 ;;
     *) main ;;
   esac
 done
