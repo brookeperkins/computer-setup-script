@@ -5,8 +5,10 @@ y_install="sudo yum install -y -q -e 0"
 
 usage() {
   echo -e "\nUsage: $0 <options>\n\nInstalls most of the required software packages for Alchemy students.\n\nOptions:"
-  echo -e "\t-g\tCheck for git and install if necessary\n\t-n\tCheck for and install nvm/node/eslint\n\t-m\tCheck for and install MongoDB and tools\n\t-v\tShow versions or installation status of all required software."
-  echo -e "If you have any difficulties, please contact a member of the instructional staff in Slack."
+  echo -e "\t-g\tCheck for git and install if necessary.\n\t-n\tCheck for and install nvm/node/eslint."
+  echo -e "\t-m\tCheck for and install MongoDB and tools.\n\t-v\tShow versions or installation status of all required software."
+  echo -e "\t-h\tShow this help message."
+  warn "\nIf you have any difficulties, please contact a member of the instructional staff in Slack.\n"
   exit 1
 }
 
@@ -166,8 +168,8 @@ distro-check() {
 
 init() {
   warn "=============== Attention! ==============="
-  echo -s "\nThis script will prompt you, perhaps twice, for your password.  This is strictly for the purposes of installing software"
-  echo -s "and will not be sent anywhere or stored.  Also, please note that when you type in your password, it will not show the keystrokes."
+  echo -e "\nThis script will prompt you, perhaps twice, for your password.  This is strictly for the purposes of installing software"
+  echo -e "and will not be sent anywhere or stored.  Also, please note that when you type in your password, it will not show the keystrokes."
   if [[ ! -d ~/.alchemy ]]; then
     mkdir -p ~/.alchemy/downloads
   fi
@@ -185,7 +187,7 @@ cleanup() {
 }
 
 distro='none'
-apps=('git' 'node' 'npm' 'eslint' 'heroku' 'mongo')
+apps=('git' 'node' 'npm' 'eslint' 'code' 'heroku' 'mongo')
 OS=$(uname -s)
 
 set -e
