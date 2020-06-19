@@ -18,12 +18,15 @@ warn() {
 }
 
 apt-update() {
+  app-check curl || $apt install curl > /dev/null
+
   info "Updating system packages"
   $apt update >/dev/null
   $apt upgrade >/dev/null
 }
 
 yum-update() {
+  app-check curl || $y_install curl > /dev/null
   info "Updating system packages"
   sudo yum update -y -q -e 0
 }
@@ -53,19 +56,19 @@ version-check() {
 }
 
 install-mongo-debian() {
-  curl -qo- https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add - >/dev/null
+  curl -so- https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add - >/dev/null
   echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list > /dev/null
   $apt update >/dev/null
   $apt install mongodb-org >/dev/null
 
-  curl -qo- https://downloads.mongodb.com/compass/mongodb-compass-community_1.21.2_amd64.deb > ~/.alchemy/downloads/mongodb-compass-community_1.21.2_amd64.deb
+  curl -so- https://downloads.mongodb.com/compass/mongodb-compass-community_1.21.2_amd64.deb > ~/.alchemy/downloads/mongodb-compass-community_1.21.2_amd64.deb
   $apt install ~/.alchemy/downloads/mongodb-compass-community_1.21.2_amd64.deb >/dev/null
 }
 
 install-mongo-redhat() {
   # TODO
-  # Change this to the git location for the .repo file
-  curl -qo- https://raw.githubusercontent.com/alchemycodelab/computer-setup-script/script-rewrite/lib/mongodb-org-4.2.repo | sudo tee /etc/yum.repos.d/mongodb-org-4.2.repo
+  # Change this to the git location for the .repo file once this is deployed to master
+  curl -so- https://raw.githubusercontent.com/alchemycodelab/computer-setup-script/script-rewrite/lib/mongodb-org-4.2.repo | sudo tee /etc/yum.repos.d/mongodb-org-4.2.repo
 
   $y_install mongodb-org
 
@@ -192,6 +195,8 @@ main() {
   install-mongo
 
   check-all-versions
+  info "Install completed!"
+  cleanup
 }
 
 while getopts 'ngmh' flag; do
