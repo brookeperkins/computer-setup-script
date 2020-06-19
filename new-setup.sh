@@ -3,7 +3,12 @@
 apt="sudo apt-get -qq -y"
 y_install="sudo yum install -y -q -e 0"
 
-usage() { echo "Usage: $0 " 1>&2; exit 1; }
+usage() {
+  echo -e "\nUsage: $0 <options>\n\nInstalls most of the required software packages for Alchemy students.\n\nOptions:"
+  echo -e "\t-g\tCheck for git and install if necessary\n\t-n\tCheck for and install nvm/node/eslint\n\t-m\tCheck for and install MongoDB and tools\n"
+  echo -e "If you have any difficulties, please contact a member of the instructional staff in Slack."
+  exit 1
+}
 
 info() {
   echo -e "\e[1;36m${1}\e[0m" # cyan
@@ -14,8 +19,8 @@ warn() {
 
 apt-update() {
   info "Updating system packages"
-  $apt update
-  $apt upgrade
+  $apt update >/dev/null
+  $apt upgrade >/dev/null
 }
 
 yum-update() {
@@ -48,13 +53,13 @@ version-check() {
 }
 
 install-mongo-debian() {
-  curl -qo- https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
-  echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
-  $apt update
-  sudo apt install mongodb-org
+  curl -qo- https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add - >/dev/null
+  echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list > /dev/null
+  $apt update >/dev/null
+  $apt install mongodb-org >/dev/null
 
   curl -qo- https://downloads.mongodb.com/compass/mongodb-compass-community_1.21.2_amd64.deb > ~/.alchemy/downloads/mongodb-compass-community_1.21.2_amd64.deb
-  sudo dpkg -i ~/.alchemy/downloads/mongodb-compass-community_1.21.2_amd64.deb
+  $apt install ~/.alchemy/downloads/mongodb-compass-community_1.21.2_amd64.deb >/dev/null
 }
 
 install-mongo-redhat() {
@@ -156,6 +161,9 @@ distro-check() {
 }
 
 init() {
+  if [[ ! -d ~/.alchemy ]]; then
+    mkdir -p ~/.alchemy/downloads
+  fi
   distro-check
   if [[ $OS == Linux ]]; then
     linux-update
@@ -164,15 +172,16 @@ init() {
   fi
 }
 
+cleanup() {
+  rm -rf ~/.alchemy/downloads
+}
+
 distro='none'
 apps=('git' 'node' 'npm' 'eslint' 'heroku' 'mongo')
 OS=$(uname -s)
 
 set -e
-if [[ ! -d ~/.alchemy ]]; then
-  mkdir -p ~/.alchemy/downloads
 
-fi
 
 main() {
   init
