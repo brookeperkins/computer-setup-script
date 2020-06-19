@@ -5,7 +5,7 @@ y_install="sudo yum install -y -q -e 0"
 
 usage() {
   echo -e "\nUsage: $0 <options>\n\nInstalls most of the required software packages for Alchemy students.\n\nOptions:"
-  echo -e "\t-g\tCheck for git and install if necessary\n\t-n\tCheck for and install nvm/node/eslint\n\t-m\tCheck for and install MongoDB and tools\n"
+  echo -e "\t-g\tCheck for git and install if necessary\n\t-n\tCheck for and install nvm/node/eslint\n\t-m\tCheck for and install MongoDB and tools\n\t-v\tShow versions or installation status of all required software."
   echo -e "If you have any difficulties, please contact a member of the instructional staff in Slack."
   exit 1
 }
@@ -181,7 +181,7 @@ init() {
 
 cleanup() {
   rm -rf ~/.alchemy/downloads
-
+  echo -e "If you have any problems or questions about the software just installed, please contact a member of the instructional staff in Slack."
 }
 
 distro='none'
