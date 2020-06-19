@@ -173,8 +173,8 @@ init() {
   if [[ ! -d ~/.alchemy ]]; then
     mkdir -p ~/.alchemy/downloads
   fi
-  distro-check
   if [[ $OS == Linux ]]; then
+    distro-check
     linux-update
   elif [[ $OS == Darwin ]]; then
     install-homebrew
