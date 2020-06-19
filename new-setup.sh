@@ -15,8 +15,8 @@ warn() {
 
 apt-update() {
   info "Updating system packages"
-  $apt update
-  $apt upgrade
+  $apt update -qq -y
+  $apt upgrade -qq -y
 }
 
 yum-update() {
