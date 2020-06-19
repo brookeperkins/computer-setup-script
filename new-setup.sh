@@ -165,7 +165,9 @@ distro-check() {
 }
 
 init() {
-  echo -s "\nThis script will prompt you, perhaps twice, for your password.  This is "
+  warn "=============== Attention! ==============="
+  echo -s "\nThis script will prompt you, perhaps twice, for your password.  This is strictly for the purposes of installing software"
+  echo -s "and will not be sent anywhere or stored.  Also, please note that when you type in your password, it will not show the keystrokes."
   if [[ ! -d ~/.alchemy ]]; then
     mkdir -p ~/.alchemy/downloads
   fi
@@ -179,6 +181,7 @@ init() {
 
 cleanup() {
   rm -rf ~/.alchemy/downloads
+
 }
 
 distro='none'
