@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # DEBIAN_FRONTEND=noninteractive
-# apt="sudo apt-get -qq -y"
-apt="sudo apt-get"
+apt="sudo apt-get -qq -y"
 y_install="sudo yum install -y -q -e 0"
 
 usage() { echo "Usage: $0 " 1>&2; exit 1; }
@@ -15,8 +14,8 @@ warn() {
 
 apt-update() {
   info "Updating system packages"
-  $apt update -qq -y
-  $apt upgrade -qq -y
+  $apt update
+  $apt upgrade
 }
 
 yum-update() {
@@ -52,7 +51,7 @@ install-mongo-debian() {
   curl -qo- https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
   echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
   $apt update
-  $apt install mongodb-org
+  apt install mongodb-org
 
   curl -qo- https://downloads.mongodb.com/compass/mongodb-compass-community_1.21.2_amd64.deb > ~/.alchemy/downloads/mongodb-compass-community_1.21.2_amd64.deb
   sudo dpkg -i ~/.alchemy/downloads/mongodb-compass-community_1.21.2_amd64.deb
