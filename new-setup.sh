@@ -6,30 +6,6 @@ y_install="sudo yum install -y -q -e 0"
 
 usage() { echo "Usage: $0 " 1>&2; exit 1; }
 
-_spin() {
-  spinner="\\|/-\\|/-"
-  tput civis # make cursor invisible
-  while :
-  do
-    for i in `seq 0 7`
-    do
-      echo -n "${spinner:$i:1}"
-      echo -en "\010"
-      sleep 0.1
-    done
-  done
-}
-
-spin() {
-  _spin & 2>/dev/null
-  SPIN_PID=$!
-}
-
-end-spin() {
-  kill -9 $SPIN_PID >/dev/null 2>&1
-  tput cnorm
-}
-
 info() {
   echo -e "\e[1;36m${1}\e[0m" # cyan
 }
@@ -39,17 +15,13 @@ warn() {
 
 apt-update() {
   info "Updating system packages"
-  spin
   $apt update
   $apt upgrade
-  end-spin
 }
 
 yum-update() {
   info "Updating system packages"
-  spin
   sudo yum update -y -q -e 0
-  end-spin
 }
 
 linux-update() {
@@ -91,19 +63,13 @@ install-mongo-redhat() {
   # Change this to the git location for the .repo file
   curl -qo- https://raw.githubusercontent.com/alchemycodelab/computer-setup-script/script-rewrite/lib/mongodb-org-4.2.repo | sudo tee /etc/yum.repos.d/mongodb-org-4.2.repo
 
-  spin
   $y_install mongodb-org
-  end-spin
 
   info "Downloading MongoDB Compass..."
-  spin
   curl -so- https://downloads.mongodb.com/compass/mongodb-compass-1.21.2.x86_64.rpm > ~/.alchemy/downloads/mongodb-compass-1.21.2.x86_64.rpm
-  end-spin
   info "Installing MongoDB Compass..."
   sleep 2
-  spin
   $y_install ~/.alchemy/downloads/mongodb-compass-1.21.2.x86_64.rpm
-  end-spin
 }
 
 install-mongo-darwin() {
@@ -166,13 +132,9 @@ install-git() {
   app-check git && return 0
   if [[ $OS == Linux ]]; then
     if [[ $distro == debian ]]; then
-      spin
       $apt install git
-      end-spin
     elif [[ $distro == redhat ]]; then
-      spin
       $y_install git
-      end-spin
     fi
   else
     brew install git
@@ -206,18 +168,32 @@ init() {
 distro='none'
 apps=('git' 'node' 'npm' 'eslint' 'heroku' 'mongo')
 OS=$(uname -s)
-trap "kill -9 $SPIN_PID" `seq 0 15`
 
 set -e
 if [[ ! -d ~/.alchemy ]]; then
   mkdir -p ~/.alchemy/downloads
+
 fi
 
-init
+main() {
+  init
 
-install-git
-install-nvm
-install-heroku
-install-mongo
+  install-git
+  install-nvm
+  install-heroku
+  install-mongo
 
-check-all-versions
+  check-all-versions
+}
+
+while getopts 'ngmh' flag; do
+  case "${flag}" in
+    n) install-nvm ; exit 0 ;;
+    g) init ; install-git ; exit 0 ;;
+    m) init ; install-mongo ; exit 0 ;;
+    h) usage ; exit 0 ;;
+    *) main ;;
+  esac
+done
+
+main "$@"
