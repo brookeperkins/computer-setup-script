@@ -103,8 +103,5 @@ installGit
 echo "GIT `git --version`"
 echo "NODE `node --version`"
 echo "NPM `npm --version`"
-echo "HEROKU `heroku --version`"
-echo "PSQL `psql --version`"
-echo "MONGO `mongo --version`"
 
 echo -e "\n\n\e[1m\e[32mSUCCESS! :)\e[0m\n\n"
