@@ -94,95 +94,11 @@ function installGit {
   fi
 }
 
-function installHeroku {
-  if [[ -n $(command -v heroku) ]]; then
-    warn "Heroku already installed"
-    return
-  fi
-
-  if [[ $OS == Linux ]]; then
-    curl https://cli-assets.heroku.com/install.sh | sh
-  else
-    brew tap heroku/brew && brew install heroku
-  fi
-}
-
-function installPostgres {
-  clear
-
-  if [[ -n $(command -v psql) ]]; then
-    warn "postgres already installed"
-    return
-  fi
-
-  info "Installing postgres"
-  if [[ $OS == Linux ]]; then
-    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-    sudo apt update
-    sudo apt install -y postgresql
-    
-    if [[ -n $(command -v systemctl) ]]; then
-      sudo systemctl enable postgresql
-      sudo systemctl start postgresql
-    else
-      sudo service postrgesql start
-    fi
-    
-  else
-    brew install postgres
-    brew services start postgresql
-  fi
-
-  echo "Create Postgres user and default database"
-  echo "   When Prompted ..."
-  echo "     - Use your wsl username as the database name"
-  echo "     - Provide your wsl username and password to create a new pg user"
-  echo "     - Say 'Yes' when asked if this user should be a Super User'"
-  echo ""
-
-  # sudo -u postgres createuser --interactive --pwprompt
-  # sudo -u postgres createdb -O `whoami` `whoami`
-
-  createuser --interactive --pwprompt
-  createdb -O `whoami` `whoami`
-}
-
-function installMongo {
-  clear
-
-  if [[ -n $(command -v mongo) ]]; then
-    warn "mongo already installed"
-    return
-  fi
-
-  info "Installing 'mongo database server and client'"
-
-  if [[ $OS == Linux ]]; then
-    wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
-    echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
-    sudo apt update
-    sudo apt install -y mongodb-org
-
-    if [[ -n $(command -v systemctl) ]]; then
-      sudo systemctl enable mongodb
-      sudo systemctl start mongodb
-    fi
-  else
-    brew tap mongodb/brew
-    brew install mongodb-community
-    brew services start mongodb/brew/mongodb-community
-  fi
-
-}
-
 updateAPT
 installHomebrew
 installNVM
 installNode
 installGit
-installHeroku
-installPostgres
-installMongo
 
 echo "GIT `git --version`"
 echo "NODE `node --version`"
