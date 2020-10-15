@@ -53,6 +53,14 @@ function installHomebrew {
 function installNVM {
   clear
 
+  if [ $SHELL = '/bin/zsh' ] && [ ! -f ~/.zshrc ]; then
+    touch ~/.zshrc
+  fi
+
+  if [ $SHELL = '/bin/bash' ] && [ ! -f ~/.bash_profile ]; then
+    touch ~/.bash_profile
+  fi
+
   if [[ -f "$HOME/.nvm/nvm.sh" ]]; then
     source $HOME/.nvm/nvm.sh
   fi
