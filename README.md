@@ -43,21 +43,6 @@ Ignoring the welcome message and the git help, here's a quick break down of what
 | `~` (home directory)  | Name of your working directory         |
 | `$`                   | Prompt symbol                          |
 
-Any characters you type will appear after the `$` prompt symbol. Go ahead and type `uname`. After pressing the Enter key, you'll see something like this.
-
-![](https://imgur.com/muRRwcK.png)
-
-Here's what happened:
-
-1. The shell waited for you to type a command.
-1. You then typed the word `uname` which appeared after the prompt.
-1. You pressed the Enter key which triggered the shell to accept your input.
-1. The shell searched for a program called `uname`.
-1. Once found, the shell launched the `uname` program and handed it control over the Terminal.
-1. While running, the `uname` program told the Terminal to display the word `MINGW32_NT-6.1`.
-1. Once finished, the `uname` program exited and handed control of the Terminal back to the shell.
-1. The shell told the Terminal to display another prompt.
-1. Once displayed, the shell began waiting for your next command.
 
 Simply stated, a Unix shell works in a read-evaluate-print loop or **REPL**.
 
