@@ -52,6 +52,7 @@ Simply stated, a Unix shell works in a read-evaluate-print loop or **REPL**.
 ### 1. App installation and terminal setup
 
 * Open up Terminal (Mac)/Ubuntu App (Windows)
+* NOTE: Instead of running the bash script below, Windows Git/Bash users should install Node directly https://nodejs.org/en/download/
 * Run this command to setup your system and install the default software utilities and applications
   * This process can take > 1 hour ...
     ```
@@ -61,7 +62,7 @@ Simply stated, a Unix shell works in a read-evaluate-print loop or **REPL**.
 ### 2. Configure Git
 
 Like artists, programmers sign their work. Let's configure Git to sign your commits with your name and email address.
-
+in
 Make sure you sign up for an account at Github <a href="https://github.com" target="_blank">here</a>.
 
 **WARNING:** Before running the following commands, **replace `YOUR FULL NAME` and `YOUR EMAIL ADDRESS` with the name and email from <a href="https://github.com/settings/profile" target="_blank">your GitHub account</a>.**
