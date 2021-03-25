@@ -14,7 +14,7 @@ You are required to supply your own laptop that meets the below requirements. Ch
 
 ## Windows Users
 
-### Install Git for Windows
+### 1) Install Git for Windows
 
 <a href="http://msysgit.github.io/" target="_blank">Git for Windows</a> brings the full feature set of Git to Windows. (More on Git in a moment.) It also includes **Bash**, a popular Unix shell. Besides giving you the ability to talk to your computer by typing commands, it also lets you use Git in the command line, just like other Unix environments.
 
@@ -46,20 +46,26 @@ Ignoring the welcome message and the git help, here's a quick break down of what
 
 Simply stated, a Unix shell works in a read-evaluate-print loop or **REPL**.
 
+### 2. Install Node for windows.
 
-## All Users
+https://nodejs.org/en/download/
+
+After using the Windows installer in the above link, open a new GitBash terminal and run the following command: `node -v`. You should see some numbers like so: `v14.0.0`. The exact numbers will probably be different, but as long as you're getting numbers, you can count this as a success!
+
+## Mac and Linux Users
 
 ### 1. App installation and terminal setup
 
 * Open up Terminal (Mac)/Ubuntu App (Windows)
-* NOTE: Instead of running the bash script below, Windows Git/Bash users should install Node directly https://nodejs.org/en/download/
 * Run this command to setup your system and install the default software utilities and applications
   * This process can take > 1 hour ...
     ```
     bash <(curl -s https://raw.githubusercontent.com/alchemycodelab/computer-setup-script/master/setup.sh)
     ```
 
-### 2. Configure Git
+## All Users
+
+### 1. Configure Git
 
 Like artists, programmers sign their work. Let's configure Git to sign your commits with your name and email address.
 in
@@ -85,7 +91,7 @@ user.email='YOUR EMAIL ADDRESS'
 user.name='YOUR FULL NAME'
 ```
 
-### 3. Install Visual Studio Code
+### 2. Install Visual Studio Code
 
 VSCode is a code editor that comes with many helpful features to streamline your development process. It also comes with an integrated terminal, debugging capabilities, and a very helpful built-in source control UI.
 
@@ -109,4 +115,3 @@ VSCode is where you will doing the vast majority of your work.
 2. Open the Command Palette by typing Ctrl+P
 3. paste `ext install ms-vscode-remote.remote-wsl` into the input box
 4. Exit VS Code
-
