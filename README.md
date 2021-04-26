@@ -52,6 +52,13 @@ Simply stated, a Unix shell works in a read-evaluate-print loop or **REPL**.
 
 After using the Windows installer in the above link, open a new GitBash terminal and run the following command: `node -v`. You should see some numbers like so: `v14.0.0`. The exact numbers will probably be different, but as long as you're getting numbers, you can count this as a success!
 
+## Mac only
+
+Run this command in the terminal. You'll need this for git to work.
+```js
+xcode-select --install
+```
+
 ## Mac and Linux Users
 
 ### 1. App installation and terminal setup
