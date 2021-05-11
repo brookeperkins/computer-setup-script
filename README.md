@@ -122,3 +122,17 @@ VSCode is where you will doing the vast majority of your work.
 2. Open the Command Palette by typing Ctrl+P
 3. paste `ext install ms-vscode-remote.remote-wsl` into the input box
 4. Exit VS Code
+
+### 3. Install ESLint
+
+From the terminal run the following command:
+
+```sh
+npm i -g eslint
+```
+
+If you get an `EACCESS` error, run this command instead:
+
+```sh
+sudo npm i -g eslint
+```
