@@ -17,23 +17,21 @@ You are required to supply your own laptop that meets the below requirements. Ch
   1. [Install `git` for windows](git-for-windows-instal.md)
   2. [Install `node` for windows](node-window-users.md)
 
-## Mac Users Git install steps:
+## Mac Users Git  and Node
 1. [Install `xcode` for mac](mac-xcode.md)
 2. [Install `git` for mac](git-mac-users.md)
 
  Mac Users app installation and terminal setup.
-1. [Install `homebrew` for mac](brew-mac.md)
-2. [Install `node version manager`](nvm.md)
-3. [Install `node` for mac](node-for-mac-linux.md)
-
-## Linux Users Git install steps:
+ 1. [Install `homebrew` for mac](brew-mac.md)
+ 2. [Install `node` for mac](node-for-mac-linux.md)
+<!--2. [Install `node version manager`](nvm.md) -->
+## Linux Users Git and Node
 1. [Install `git` for linux](git-linux-users.md)
 
  Linux Users app installation and terminal setup.
 1. [Install `homebrew` for linux](brew-linux.md)
-2. [Install `node version manager`](nvm.md)
-3. [Install `node` for linux](node-for-mac-linux.md)
-
+2. [Install `node` for linux](node-for-mac-linux.md)
+<!-- 2. [Install `node version manager`](nvm.md) -->
 ## All Users
 #### 1. [Follow these steps to Configure Git ](all-user-git-config.md)
 
