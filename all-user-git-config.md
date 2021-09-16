@@ -13,15 +13,19 @@ git config --global user.name 'YOUR FULL NAME'
 git config --global user.email 'YOUR EMAIL ADDRESS'
 ```
 
-The terminal does not send success messages, in order to double check that you have successfully assigned your username and email:
+#### The terminal does not send success messages, in order to double check that you have successfully assigned your username and email:
 
 ```
 git config --list
 ```
 
-Your terminal should output the following lines (**but with your email address you used on GitHub and your full name!**):
+#### Your terminal should output the following lines (**but with your email address you used on GitHub and your full name!**):
 
 ```
 user.email='YOUR EMAIL ADDRESS'
 user.name='YOUR FULL NAME'
+```
+#### To validate this step was sucessfull run this command.
+``` 
+cat ~/.gitconfig
 ```
