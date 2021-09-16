@@ -1,4 +1,4 @@
-#Windows Users Node Instal
+#Windows Users Node Install
 
 
 [Download Node here](https://nodejs.org/en/download/)

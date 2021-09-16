@@ -19,6 +19,8 @@ You are required to supply your own laptop that meets the below requirements. Ch
   4. [Install `Visual Studio Code`](vscode-all.md)
   5. [Install `ESLint`](eslint.md) 
   6. [`Visual Studio Code` extensions](vsc-need-ex.md)
+      * Windows Users have additional setup at the end of the Install Visual Studio Code please proceed to the link to finish set-up. 
+        [ `Windows` after vscode install](vscode-windows.md)
 
 ## For Mac
   1. [Install `xcode` for mac](mac-xcode.md)
@@ -38,8 +40,6 @@ You are required to supply your own laptop that meets the below requirements. Ch
   3. [Install `node` for linux](node-for-mac-linux.md)
   4. [Follow these steps to `Configure Git` ](git-config.md)
   5. [Install `Visual Studio Code`](vscode-all.md)
-        * Windows Users have additional setup at the end of the Install Visual Studio Code please proceed to the link to finish set-up. 
-        [ `Windows` after vscode install](vscode-windows.md)
   6. [Install `ESLint`](eslint.md) 
   7. [`Visual Studio Code` extensions](vsc-need-ex.md)
 
