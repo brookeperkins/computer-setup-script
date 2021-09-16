@@ -26,7 +26,7 @@ You are required to supply your own laptop that meets the below requirements. Ch
 2. Download and install Git 
 * [Link](git-mac-users.md)
 
-## Linux Users Git instal
+## Linux Users Git install
 * [Link](git-linux-users.md)
 
 ## Mac and Linux Users app installation and terminal setup.
@@ -50,7 +50,7 @@ You are required to supply your own laptop that meets the below requirements. Ch
 
 ### 4. Useful Visual Studio Code Extensions [Link](vscode-ex.md)
 
-### 5. After completing all of the steps for your computer setup run these commands
+### 5. After completing all of the steps for your computer setup run these commands and take a screenshoot and submit via canvas.
 ```
 git --version
 
@@ -64,7 +64,7 @@ eslint --version
 
 cat ~/.gitconfig
 ```
- and take a screenshoot and submit via canvas. 
+ 
  
 
 
