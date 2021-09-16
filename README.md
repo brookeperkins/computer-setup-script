@@ -12,32 +12,42 @@ You are required to supply your own laptop that meets the below requirements. Ch
 * At least 8GB of RAM. 16GB RAM strongly preferred.
 * To be free of viruses, and in general working order.
 
-## Windows Users  
-### 1. Step one install git for Windows. 
- &nbsp; --- [Link to install git for Windows](git-for-windows-instal.md)
+## Windows Users Git and Node  
+### 1. Install git for Windows 
+ * [Link](git-for-windows-instal.md)
 ### 2. Install Node for Windows 
- &nbsp; --- [Link to install node for Windows](node-window-users.md)
+ * [Link](node-window-users.md)
 
-## Mac only follow this link to get git to work.
+
+## Mac Users Git install steps
+
+1. Follow this link to get git to work. 
 * [Link](mac-xcode.md)
+2. Download and install Git 
+* [Link](git-mac-users.md)
 
-## Mac and Linux users app installation and terminal setup.
-* 1. Install Homebrew via documentation [Link for Mac and Linux](brew-mac-linux.md)
-* 2. Install NVM node version manager and Node [Link](nvm.md)
+## Linux Users Git instal
+* [Link](git-linux-users.md)
 
+## Mac and Linux Users app installation and terminal setup.
+* 1. Install Homebrew via documentation
+ [Link](brew-mac-linux.md)
+* 2. Install NVM node version manager
+ [Link](nvm.md)
+* 3. Install Node [Link](node.md)
 ## All Users
 
 ### 1. Follow these steps to Configure Git [Link](all-user-git-config.md)
 
 
 ### 2. Install Visual Studio Code [Link](vscode-all.md)
- * 1. Mac OSX Users have additional setup at the end of the Instal Visual Studio Code please proceed to the link to finish set-up.
+ * 1. Mac OSX Users have additional setup at the end of the Install Visual Studio Code please proceed to the link to finish set-up.
  [Link](vscode-mac.md)
- * 2. Windows Users have additional setup at the end of the Instal Visual Studio Code please proceed to the link to finish set-up. 
+ * 2. Windows Users have additional setup at the end of the Install Visual Studio Code please proceed to the link to finish set-up. 
  [Link](vscode-windows.md)
 
 ### 3. Install ESLint [Link](eslint.md)
 
-### 4. Usefull Visual Studio Code Extensions [Link](vscode-ex.md)
+### 4. Useful Visual Studio Code Extensions [Link](vscode-ex.md)
 
 

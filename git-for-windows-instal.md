@@ -30,5 +30,11 @@ Ignoring the welcome message and the git help, here's a quick break down of what
 
 Simply stated, a Unix shell works in a read-evaluate-print loop or **REPL**.
 
+### To validate this is complete run in your terminal:
+```
+git --version
+```
+### Should look similar to this in your terminal:
 
-**Go back to the read me and follow the link for step 2**
+![](assets/git-version.png)
+* Go back to the read me and follow the link for step 2 [Readme Link](README.md)
