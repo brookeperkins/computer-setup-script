@@ -50,4 +50,23 @@ You are required to supply your own laptop that meets the below requirements. Ch
 
 ### 4. Useful Visual Studio Code Extensions [Link](vscode-ex.md)
 
+### 5. After completing all of the steps for your computer setup run these commands
+```
+git --version
+
+node --version
+
+npm --version
+
+code --version
+
+eslint --version
+
+cat ~/.gitconfig
+```
+ and take a screenshoot and submit via canvas. 
+ 
+
+
+
 
