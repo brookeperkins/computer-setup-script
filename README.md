@@ -23,7 +23,7 @@ You are required to supply your own laptop that meets the below requirements. Ch
 
 ## Mac and Linux users app installation and terminal setup.
 * 1. Install Homebrew via documentation [Link for Mac and Linux](brew-mac-linux.md)
-* 2. Install NVM node version manager [Link](nvm.md)
+* 2. Install NVM node version manager and Node [Link](nvm.md)
 
 ## All Users
 
