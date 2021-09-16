@@ -6,8 +6,12 @@
 ![](assets/vscode-search.png)
 # 4. Search for the extensions you need! 
 ![](assets/LiveServer.png)
-* Live Server
-* Eslint
-* Indent-rainbow
-* Code spell checker
+
+
+
 * Here are few but there are many more to make your code cleaner and more readable.
+    1. Indent-rainbow
+    2. beHuman 
+    3. markdownlint
+    4. htmltagwrap
+    5. Commit Reminder
