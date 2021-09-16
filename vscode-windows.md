@@ -4,3 +4,4 @@
 2. Open the Command Palette by typing Ctrl+P
 3. paste `ext install ms-vscode-remote.remote-wsl` into the input box
 4. Exit VS Code
+5. Go back to [here](vscode-all.md) for validation step.

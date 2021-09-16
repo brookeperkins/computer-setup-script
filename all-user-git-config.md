@@ -29,3 +29,10 @@ user.name='YOUR FULL NAME'
 ``` 
 cat ~/.gitconfig
 ```
+#### Your out put will look like so: 
+
+```
+name = your name
+
+email = your email
+```
