@@ -12,41 +12,37 @@ You are required to supply your own laptop that meets the below requirements. Ch
 * At least 8GB of RAM. 16GB RAM strongly preferred.
 * To be free of viruses, and in general working order.
 
-## Windows Users Git and Node  
+## For Windows  
   1. [Install `git` for windows](git-for-windows-instal.md)
   2. [Install `node` for windows](node-window-users.md)
+  3. [Follow these steps to `Configure Git` ](all-user-git-config.md)
+  4. [Install `Visual Studio Code`](vscode-all.md)
 
-## Mac Users Git  and Node
+## For Mac
   1. [Install `xcode` for mac](mac-xcode.md)
   2. [Install `git` for mac](git-mac-users.md)
-
- Mac Users app installation and terminal setup.
-   1. [Install `homebrew` for mac](brew-mac.md)
-   2. [Install `node` for mac](node-for-mac-linux.md)
-<!--2. [Install `node version manager`](nvm.md) -->
+  3. [Install `homebrew` for mac](brew-mac.md)
+  4. [Install `node` for mac](node-for-mac-linux.md)
+  5. [Follow these s to `Configure Git` ](all-user-git-config.md)
+  6. [Install `Visual Studio Code`](vscode-all.md)
+      * Mac OSX Users have additional setup at the end of the Install Visual Studio Code please proceed to the link to finish set-up.
+      [ `Mac` after vscode install](vscode-mac.md)
 
 ## Linux Users Git and Node
   1. [Install `git` for linux](git-linux-users.md)
-
- Linux Users app installation and terminal setup.
-   1. [Install `homebrew` for linux](brew-linux.md)
-   2. [Install `node` for linux](node-for-mac-linux.md)
-<!-- 2. [Install `node version manager`](nvm.md) -->
+  2. [Install `homebrew` for linux](brew-linux.md)
+  3. [Install `node` for linux](node-for-mac-linux.md)
+  4. [Follow these steps to `Configure Git` ](all-user-git-config.md)
+  5. [Install `Visual Studio Code`](vscode-all.md)
+        * Windows Users have additional setup at the end of the Install Visual Studio Code please proceed to the link to finish set-up. 
+ [ `Windows` after vscode install](vscode-windows.md)
 
 # All Users
-#### 1. [Follow these steps to Configure Git ](all-user-git-config.md)
-
-#### 2. [Install `Visual Studio Code`](vscode-all.md)
- * Mac OSX Users have additional setup at the end of the Install Visual Studio Code please proceed to the link to finish set-up.
- [ Mac after `vscode` install](vscode-mac.md)
- * Windows Users have additional setup at the end of the Install Visual Studio Code please proceed to the link to finish set-up. 
- [ Windows after `vscode` install](vscode-windows.md)
-
 #### 3. [Install `eslint`](eslint.md)
 
-#### 4. [Useful Visual Studio Code Extensions ](vscode-ex.md)
+#### 4. [ `Useful` Visual Studio Code Extensions  ](vscode-ex.md)
 
-#### 5. After completing all of the steps for your computer setup run these commands and take a screenshoot and submit via canvas.
+#### 5. After completing all of the steps for your computer setup run these commands one at a time and take a **screenshoot** and submit via **canvas**.
 ```
 git --version
 
@@ -58,7 +54,7 @@ code --version
 
 eslint --version
 
-cat ~/.gitconfig
+git config --list
 ```
  
  

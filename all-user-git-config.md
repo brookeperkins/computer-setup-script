@@ -25,14 +25,3 @@ git config --list
 user.email='YOUR EMAIL ADDRESS'
 user.name='YOUR FULL NAME'
 ```
-#### To validate this step was sucessfull run this command.
-``` 
-cat ~/.gitconfig
-```
-#### Your out put will look like so: 
-
-```
-name = your name
-
-email = your email
-```

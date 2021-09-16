@@ -8,6 +8,6 @@
 ![](assets/LiveServer.png)
 * Live Server
 * Eslint
-* HTML Snippets
 * Indent-rainbow
+* Code spell checker
 * Here are few but there are many more to make your code cleaner and more readable.
