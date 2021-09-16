@@ -3,7 +3,7 @@
 
 * Open up Terminal (Mac)/Ubuntu App (Windows)
 
-* Go to homebrew and instal [Link](https://brew.sh/)
+* Go to homebrew and install [Homebrew Install](https://brew.sh/)
 
 ### 2. Validate that you have sucessful installed Homebrew run this command:
 ``` 
