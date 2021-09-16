@@ -34,7 +34,7 @@ You are required to supply your own laptop that meets the below requirements. Ch
  [Link](brew-mac-linux.md)
 * 2. Install NVM node version manager
  [Link](nvm.md)
-* 3. Install Node [Link](node.md)
+* 3. Install Node [Link](node-for-mac-linux.md)
 ## All Users
 
 ### 1. Follow these steps to Configure Git [Link](all-user-git-config.md)
