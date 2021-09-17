@@ -23,7 +23,7 @@ You are required to supply your own laptop that meets the below requirements. Ch
         [ `Windows` after vscode install](vscode-windows.md)
 
 ## For Mac
-  1. [Install `xcode` for Mac](M-xcode.md)
+  1. [Install `xcode` for Mac](mac-xcode.md)
   2. [Install `Git` for Mac](git-mac-users.md)
   3. [Install `Homebrew` for Mac](brew-mac.md)
   4. [Install `Node` for Mac](node-for-mac-linux.md)
