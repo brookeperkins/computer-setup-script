@@ -13,35 +13,35 @@ You are required to supply your own laptop that meets the below requirements. Ch
 * To be free of viruses, and in general working order.
 
 ## For Windows  
-  1. [Install `git` for windows](git-for-windows-instal.md)
-  2. [Install `node` for windows](node-window-users.md)
+  1. [Install `Git` for Windows](git-for-windows-instal.md)
+  2. [Install `Node` for Windows](node-window-users.md)
   3. [Follow these steps to `Configure Git` ](git-config.md)
   4. [Install `Visual Studio Code`](vscode-all.md)
   5. [Install `ESLint`](eslint.md) 
-  6. [`Visual Studio Code` extensions](vsc-need-ex.md)
+  6. [Install `Visual Studio Code` extensions](vsc-need-ex.md)
       * Windows Users have additional setup at the end of the Install Visual Studio Code please proceed to the link to finish set-up. 
         [ `Windows` after vscode install](vscode-windows.md)
 
 ## For Mac
-  1. [Install `xcode` for mac](mac-xcode.md)
-  2. [Install `git` for mac](git-mac-users.md)
-  3. [Install `homebrew` for mac](brew-mac.md)
-  4. [Install `node` for mac](node-for-mac-linux.md)
+  1. [Install `xcode` for Mac](M-xcode.md)
+  2. [Install `Git` for Mac](git-mac-users.md)
+  3. [Install `Homebrew` for Mac](brew-mac.md)
+  4. [Install `Node` for Mac](node-for-mac-linux.md)
   5. [Follow these steps to `Configure Git` ](git-config.md)
   6. [Install `Visual Studio Code`](vscode-all.md)
       * Mac OSX Users have additional setup at the end of the Install Visual Studio Code please proceed to the link to finish set-up.
       [ `Mac` after vscode install](vscode-mac.md)
   7. [Install `ESLint`](eslint.md) 
-  8. [`Visual Studio code` extensions](vsc-need-ex.md)
+  8. [Install `Visual Studio code` extensions](vsc-need-ex.md)
 
 ## For Linux
-  1. [Install `git` for linux](git-linux-users.md)
-  2. [Install `homebrew` for linux](brew-linux.md)
-  3. [Install `node` for linux](node-for-mac-linux.md)
+  1. [Install `Git` for Linux](git-linux-users.md)
+  2. [Install `Homebrew` for Linux](brew-linux.md)
+  3. [Install `Node` for Linux](node-for-mac-linux.md)
   4. [Follow these steps to `Configure Git` ](git-config.md)
   5. [Install `Visual Studio Code`](vscode-all.md)
   6. [Install `ESLint`](eslint.md) 
-  7. [`Visual Studio Code` extensions](vsc-need-ex.md)
+  7. [Install `Visual Studio Code` extensions](vsc-need-ex.md)
 
 
 ###  After completing all of the steps for your computer setup run these commands one at a time and take a **screenshoot** and submit via **canvas**.
