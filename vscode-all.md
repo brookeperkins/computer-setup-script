@@ -7,11 +7,9 @@
 1. When you reach the section for `Additional tasks`, make sure every box is checked.
 1. Click install and continue to follow and onscreen prompts.
 
-#### Mac users have additional steps please follow this [LINK](vscode-mac.md)
 
-#### Windows users have additional steps please follow this [LINK](vscode-windows.md)
-
-#### To validate after you finish the extra step for those with Mac or Windows run this command in your terminal:
+#### To validate run this command in your terminal:
+ * Note  `Mac` users have an additional step to setting up. You must first finish that step located on [Read me file](README.md) on line `33`, then you can run this command to validate that you have successfully setup `Visual Code Studio`.
 ```
  code --version
 ```

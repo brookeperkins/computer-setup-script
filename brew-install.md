@@ -1,4 +1,4 @@
-# Install Brew
+# Install Homebrew
 1. App installation and terminal setup
     * Open up Terminal window
     * Go to homebrew and install [Homebrew Install](https://brew.sh/)

@@ -12,7 +12,8 @@ You are required to supply your own laptop that meets the below requirements. Ch
 * At least 8GB of RAM. 16GB RAM strongly preferred.
 * To be free of viruses, and in general working order.
 
-## For Windows  
+## For Windows 
+#### Follow steps 1 through 6 to set up your `Windows` operating system: 
   1. [Install `Git` for Windows](git-for-windows-instal.md)
   2. [Install `Node` for Windows](install-node.md)
   3. [Follow these steps to `Configure Git` ](git-config.md)
@@ -21,6 +22,7 @@ You are required to supply your own laptop that meets the below requirements. Ch
   6. [Install `Visual Studio Code` extensions](vsc-need-ex.md)
 
 ## For Mac
+#### Follow steps 1 through 8 to set up your Mac operating system:
   1. [Install `xcode` for Mac](mac-xcode.md) 
   2. [Install `Homebrew` for Mac](brew-install.md)
   3. [Install `Git` for Mac](git-mac-users.md)
@@ -34,6 +36,7 @@ You are required to supply your own laptop that meets the below requirements. Ch
   8. [Install `Visual Studio code` extensions](vsc-need-ex.md)
 
 ## For Linux  
+#### Follow steps 1 through 7 to set up your Linux operating system:
   1. [Install `Homebrew` for Linux](brew-install.md)
   2. [Install `Git` for Linux](git-linux-users.md)
 

@@ -1,6 +1,4 @@
-## All Users
-
-### 1. Configure Git
+# Configure Git
 
 Like artists, programmers sign their work. Let's configure Git to sign your commits with your name and email address.
 in

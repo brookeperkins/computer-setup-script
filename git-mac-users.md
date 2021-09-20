@@ -1,5 +1,4 @@
-# How to install Git for Mac Users:
-
+# Install Git for `Mac`
 ```
 $ brew install git
 ```
