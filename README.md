@@ -19,8 +19,6 @@ You are required to supply your own laptop that meets the below requirements. Ch
   4. [Install `Visual Studio Code`](vscode-all.md)
   5. [Install `ESLint`](eslint.md) 
   6. [Install `Visual Studio Code` extensions](vsc-need-ex.md)
-      * Windows Users have additional setup at the end of the Install Visual Studio Code please proceed to the link to finish set-up. 
-        [ `Windows` after vscode install](vscode-windows.md)
 
 ## For Mac
   1. [Install `xcode` for Mac](mac-xcode.md)
