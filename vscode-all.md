@@ -9,7 +9,7 @@
 
 
 #### To validate run this command in your terminal:
- * Note  `Mac` users have an additional step to setting up. You must first finish that step located on [Read me file](README.md) on line `33`, then you can run this command to validate that you have successfully setup `Visual Code Studio`.
+ * Note  `Mac` users have an additional step to setting up. You must first finish that step located on [Read me file](README.md), then you can run this command to validate that you have successfully setup `Visual Code Studio`.
 ```
  code --version
 ```

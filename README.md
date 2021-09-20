@@ -22,7 +22,7 @@ You are required to supply your own laptop that meets the below requirements. Ch
   6. [Install `Visual Studio Code` extensions](vsc-need-ex.md)
 
 ## For Mac
-#### Follow steps 1 through 8 to set up your Mac operating system:
+#### Follow steps 1 through 8 to set up your `Mac` operating system:
   1. [Install `xcode` for Mac](mac-xcode.md) 
   2. [Install `Homebrew` for Mac](brew-install.md)
   3. [Install `Git` for Mac](git-mac-users.md)
@@ -36,7 +36,7 @@ You are required to supply your own laptop that meets the below requirements. Ch
   8. [Install `Visual Studio code` extensions](vsc-need-ex.md)
 
 ## For Linux  
-#### Follow steps 1 through 7 to set up your Linux operating system:
+#### Follow steps 1 through 7 to set up your `Linux` operating system:
   1. [Install `Homebrew` for Linux](brew-install.md)
   2. [Install `Git` for Linux](git-linux-users.md)
 
