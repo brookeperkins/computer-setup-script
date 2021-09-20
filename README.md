@@ -25,7 +25,7 @@ You are required to supply your own laptop that meets the below requirements. Ch
 ## For Mac
   1. [Install `xcode` for Mac](mac-xcode.md)
   2. [Install `Git` for Mac](git-mac-users.md)
-  3. [Install `Homebrew` for Mac](brew-mac.md)
+  3. [Install `Homebrew` for Mac](brew-install.md)
   4. [Install `Node` for Mac](install-node.md)
   5. [Follow these steps to `Configure Git` ](git-config.md)
   6. [Install `Visual Studio Code`](vscode-all.md)
@@ -36,7 +36,7 @@ You are required to supply your own laptop that meets the below requirements. Ch
 
 ## For Linux
   1. [Install `Git` for Linux](git-linux-users.md)
-  2. [Install `Homebrew` for Linux](brew-linux.md)
+  2. [Install `Homebrew` for Linux](brew-install.md)
   3. [Install `Node` for Linux](install-node.md)
   4. [Follow these steps to `Configure Git` ](git-config.md)
   5. [Install `Visual Studio Code`](vscode-all.md)

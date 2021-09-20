@@ -18,10 +18,3 @@ git config --global user.email 'YOUR EMAIL ADDRESS'
 ```
 git config --list
 ```
-
-#### Your terminal should output the following lines (**but with your email address you used on GitHub and your full name!**):
-
-```
-user.email='YOUR EMAIL ADDRESS'
-user.name='YOUR FULL NAME'
-```
