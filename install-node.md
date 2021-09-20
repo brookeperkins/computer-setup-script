@@ -4,7 +4,8 @@ Node “uses an event-driven, non-blocking I/O model.” In practice, this means
 
 * Follow this link and pick your computer system. [Node Documentation](https://nodejs.org/en/download/)
 
-## To validate that you completed this step run the following command:
+## After completing the node install, open a new terminal and run the following command:
+
 
 ``` 
 node --version 

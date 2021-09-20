@@ -6,7 +6,7 @@ What's Git? It's a very popular **version control** system. Version control syst
 
 To get started, download <a href="http://msysgit.github.io/" target="_blank">Git for Windows</a>. Once you click the "download" button, you'll see a list of download options.
 
-2
+
 
 Once you get it downloaded, double-click the file to open the installer. It will guide you through several options; the defaults are just fine, so keep on clicking "Next" until it's done.
 
@@ -37,4 +37,3 @@ git --version
 ### Should look similar to this in your terminal:
 
 ![](assets/git-version.png)
-* Go back to the read me and follow the link for step 2 [Readme Link](README.md)
